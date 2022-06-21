@@ -25,9 +25,6 @@
           <element id="library" level="project" name="Maven: org.jetbrains:annotations:13.0" />
           <element id="library" level="project" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-common:1.6.10" />
           <element id="library" level="project" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.10" />
-          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.5.10" />
-          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.17.2" />
-          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.17.2" />
         </element>
       </element>
       <element id="directory" name="META-INF">
