@@ -12,11 +12,12 @@
     <link rel="stylesheet" href="css/deposit.css">
 </head>
 <body>
+
 <div class="cotainer">
 
     <div class="box1">
 
-        <div class="head1"></div>
+        <div class="head1"><br><br><br></div>
 
         <div class="head2">
             <p>欢迎您存款</p>

@@ -1,22 +1,23 @@
 package com.example.model;
 
 public class UserLogin {
-    public String getC_id() {
-        return c_id;
+
+    public String getId() {
+        return id;
     }
 
-    public void setC_id(String c_id) {
-        this.c_id = c_id;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getC_password() {
-        return c_password;
+    public String getPassword() {
+        return password;
     }
 
-    public void setC_password(String c_password) {
-        this.c_password = c_password;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    private String c_id;
-    private String c_password;
+    private String id;
+    private String password;
 }
