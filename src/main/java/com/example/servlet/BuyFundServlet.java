@@ -33,20 +33,32 @@ public class BuyFundServlet extends HttpServlet {
                 "cli.c_id = cfd.c_id and cli.c_id='" + c_id + "' and cfd.f_id = '" + f_id + "'; ";
         String queryFund = "select * from finance.client_fund cfd, finance.client cli " +
                 "where cfd.c_id = cli.c_id and cli.c_id = '" + c_id + "' and cfd.f_id = '" + f_id + "';";
+        String remainFund = "SELECT f_remain from finance.fund where fund.f_id = '" + f_id + "';";
+        String buyFund = "UPDATE finance.fund SET f_remain = f_remain - " + fundBuyNum + "where f_id = '" + f_id + "';";
         Statement stmt = null;
         ResultSet rs = null;
         try (Connection conn = GaussDBQuery.getConnetion()) {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
 //            System.out.println(idCard);
 //            System.out.println(getCid);
-
+            rs = stmt.executeQuery(remainFund);
+            double remain = 0;
+            if(rs.next()){
+                remain = rs.getDouble("f_remain");
+            }
+            if(remain < Double.parseDouble(fundBuyNum)){
+                out.println("<h2>余量不足</h2>");
+                return ;
+            }
             String insertFund = String.format("insert into finance.client_fund values('%s','%s','1','盈利','0','%s',%s,'20');", c_id.strip(), f_id.strip(), LocalDate.now(), fundBuyNum);
 //            System.out.println(insertFund);
             rs = stmt.executeQuery(queryFund);
             if(rs.next()){
+                stmt.executeUpdate(buyFund);
                 stmt.executeUpdate(updateFund);
                 rs.close();
             }else{
+                stmt.executeUpdate(buyFund);
                 stmt.executeUpdate(insertFund);
                 rs.close();
             }
