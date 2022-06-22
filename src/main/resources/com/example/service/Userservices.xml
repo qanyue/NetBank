@@ -14,24 +14,33 @@
     <select id="login" parameterType="com.example.model.UserLogin" resultMap="userResultMap">
         select * from finance.users where c_id=#{id} and c_password=#{password}
     </select>
-    <!---查询保险-->
-    <select id="c_InsuranceQuery" parameterType="String" resultType="com.example.model.Client_Insurance">
+    <!--查询个人所有保险-->
+    <select id="InsuranceQuery" parameterType="String" resultType="com.example.model.Client_Insurance">
         select *
         from finance.client_insurance where c_id=#{id};
+    </select>
+    <!--查询个人特定保险-->
+    <select id="InsuranceQueryOne" resultType="com.example.model.Client_Insurance">
+        select * from finance.client_insurance where c_id=#{c_id,jdbcType=VARCHAR} and i_id = #{i_id,jdbcType=VARCHAR}
     </select>
     <!--买保险-->
     <insert id="buyInsurance" parameterType="com.example.model.Client_Insurance">
         INSERT INTO finance.client_insurance(c_id,i_id,ci_number,ci_status,ci_income,ci_time,ci_sum,ci_year)
         VALUES  (#{c_id},#{i_id},#{ci_number},#{ci_status},#{ci_income},#{ci_time},#{ci_sum},#{ci_year});
     </insert>
-    <!--删除保险-->
-    <delete id="c_DeleteInsurance" parameterType="com.example.model.Client_Insurance">
-        DELETE  FROM  finance.client_insurance where c_id=#{c_id} and i_id = #{i_id}
+    <!--删除特定保险-->
+    <delete id="DeleteInsurance" >
+        DELETE  FROM  finance.client_insurance where c_id=#{c_id,jdbcType=VARCHAR} and i_id = #{i_id,jdbcType=VARCHAR}
     </delete>
-    <!--查询理财产品-->
-    <select id="c_ProductQuery" parameterType="String" resultType="com.example.model.Client_Products">
+
+    <!--查询个人所用理财产品-->
+    <select id="ProductQuery" parameterType="String" resultType="com.example.model.Client_Products">
         select *
         from finance.client_products where c_id=#{id};
+    </select>
+    <!--查询个人特定理财产品-->
+    <select id="ProductQueryOne" resultType="com.example.model.Client_Insurance">
+        select * from finance.client_products where c_id=#{c_id,jdbcType=VARCHAR} and p_id= #{p_id,jdbcType=VARCHAR}
     </select>
     <!--买理财产品-->
     <insert id="buyProducts" parameterType="com.example.model.Client_Products">
@@ -39,8 +48,8 @@
         VALUES  (#{c_id},#{p_id},#{cp_number},#{cp_status},#{cp_income},#{cp_time},#{cp_sum});
     </insert>
     <!--删除理财产品-->
-    <delete id="c_DeleteProducts" parameterType="com.example.model.Client_Products" >
-        DELETE  FROM  finance.client_products where c_id=#{c_id} and p_id = #{p_id}
+    <delete id="DeleteProducts" >
+        DELETE  FROM  finance.client_products where c_id=#{c_id,jdbcType=VARCHAR} and p_id = #{c_id,jdbcType=VARCHAR}
     </delete>
 
     <!--开卡-->
