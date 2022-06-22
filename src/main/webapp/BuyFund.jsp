@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.example.servlet.GaussDBQuery" %>
+<%@ page import="com.example.demo1.GaussDBQuery" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="java.sql.Statement" %>
@@ -25,7 +25,6 @@
         try (Connection conn = GaussDBQuery.getConnetion()) {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
             rs = stmt.executeQuery("select * from finance.fund;");
-
             GaussDBQuery.printQueryRadio(rs, out, "f_id");
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

@@ -11,7 +11,7 @@ import java.util.*;
 public class GaussDBQuery {
 
     private static final String JDBC_DRIVER = "org.opengauss.Driver";
-    private static final String DB_URL = "jdbc:opengauss://124.70.60.91:26000/finance?ApplicationName=app1";
+    private static final String DB_URL = "jdbc:opengauss://luoxq.top:5432/finance?ApplicationName=app1";
     // 数据库的用户名与密码，需要根据自己的设置
     private static final String USER = "gaussdb";
     private static final String PASS = "Hohai@123";
@@ -65,6 +65,7 @@ public class GaussDBQuery {
             System.out.println("数据库字典未找到");
         }
     }
+
     public static  void printQueryRadio(ResultSet rs, JspWriter out, String radioValueName) throws SQLException {
         ArrayList<LinkedHashMap<String, Object>> rows = GaussDBQuery.getSelectRestult(rs);
         ArrayList<String> cols_name = new ArrayList<>(rows.get(0).keySet());

@@ -5,6 +5,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -35,14 +37,16 @@ public class Login extends HttpServlet {
                     return;
                 }
                 System.out.println(2);
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("index.jsp");//管理员界面：用户信息增删改查、银行卡信息增删改查、理财产品信息增删改查
             }else if("user".equals(type)){
                 rs = stmt.executeQuery(userSql);
                 if(!rs.next()){
                     out.println("<h1>输入的账号或密码错误，请重试");
                     return;
                 }
-                response.sendRedirect("Query.jsp");
+                HttpSession session = request.getSession();
+                session.setAttribute("c_id",username);
+                response.sendRedirect("User.jsp");//客户界面：显示他自己的银行卡、理财产品、个人信息，存取款界面，理财产品购买
             }else{
                 out.println("<h1>请选择登陆类别");
                 return;

@@ -15,7 +15,7 @@ body{
     /*播放状态*/
     animation-play-state: running;
 }
-.form{
+.form {
     background: rgba(255, 255, 255, 0.5);
     width: 400px;
     margin: 120px auto;
