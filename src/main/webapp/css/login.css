@@ -62,22 +62,28 @@ input:focus{
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
 }
+
 input[type=radio] {
     background-color: #555555;
 
 }
 
 input[type=text] {
+    border: #555555 1px solid;
+
     color: #555555;
     width: 300px;
     height:25px;
 }
 
 input[type=password] {
+    border: #555555 1px solid;
+
     color: #555555;
     width: 300px;
     height:25px;
 }
+
 
 /*button {*/
 /*    background: #eb94d0;*/
