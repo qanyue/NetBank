@@ -35,15 +35,17 @@ h1{
 .button {
     padding-top: 50px;
     padding-bottom: 50px;
-    background-image: url(../images/background.jpeg);
+    /*background-image: url(../images/background.jpeg);*/
+    background-color: white;
     background-size: 100% 100%;
     background-attachment: fixed;
-    padding-right: 80px;
+
 
 }
 button {
-
-    background-color: #555555;
+    border: none;
+    border-radius: 5px;
+    background-color: #66afe9;
     color: #f4f4f4;
     font-size: 30px;
 }

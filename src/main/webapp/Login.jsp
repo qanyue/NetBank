@@ -32,16 +32,15 @@
         <span style="color: #555555">管理员</span>
         <input type="radio" value="user" name="type" id="user">
         <label style="color: #555555">用户</label>
+        <br><br>
+        <div class="button">
+          <button type="submit" style="color:#f4f4f4">登陆</button>
+        </div>
       </div>
       <br>
       <!--账号-->
 
 
-
-      <br><br>
-      <div class="button">
-        <button type="submit" style="color:#f4f4f4">登陆</button>
-      </div>
 
     </form>
   </div>
