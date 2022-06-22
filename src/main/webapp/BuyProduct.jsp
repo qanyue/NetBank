@@ -25,7 +25,7 @@
         try (Connection conn = GaussDBQuery.getConnetion()) {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
             rs = stmt.executeQuery("select * from finance.products;");
-            GaussDBQuery.printQueryRadioP(rs, out, "p_id");
+            GaussDBQuery.printQueryRadio(rs, out, "p_id","p_status");
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {

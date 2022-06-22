@@ -66,7 +66,7 @@ public class GaussDBQuery {
         }
     }
 
-    public static  void printQueryRadio(ResultSet rs, JspWriter out, String radioValueName) throws SQLException {
+    public static  void printQueryRadio(ResultSet rs, JspWriter out, String radioValueName,String status) throws SQLException {
         ArrayList<LinkedHashMap<String, Object>> rows = GaussDBQuery.getSelectRestult(rs);
         ArrayList<String> cols_name = new ArrayList<>(rows.get(0).keySet());
         try {
@@ -81,39 +81,7 @@ public class GaussDBQuery {
             }
             out.println("</tr>");
             for (LinkedHashMap<String, Object> row : rows) {
-                if (!((String) row.get("f_status")).strip().equals("在售")) {
-                    continue;
-                }
-                out.println("<tr>");
-                for (String filed : row.keySet()) {
-                    out.print("<th>" + row.get(filed) + "</th>");
-                }
-                out.println("<th> <input type=\"radio\" name=\"radioSelect\" value=\""+
-                        ((String) row.get(radioValueName)).strip()+"\"> </th>");
-                out.println("</tr>");
-            }
-            out.println("</table>");
-            out.println("<br>");
-        } catch (IOException e) {
-            System.out.println("数据库字典未找到");
-        }
-    }
-    public static  void printQueryRadioI(ResultSet rs, JspWriter out, String radioValueName) throws SQLException {
-        ArrayList<LinkedHashMap<String, Object>> rows = GaussDBQuery.getSelectRestult(rs);
-        ArrayList<String> cols_name = new ArrayList<>(rows.get(0).keySet());
-        try {
-            JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\idea-workspace\\demo1\\src\\main\\java\\com\\example\\servlet\\AttributDic.json"));
-            out.println("<style> table, th, td { border:1px solid black;} </style>");
-            out.println("选择购买");
-            out.println("<table>");
-            out.println("<tr>");
-            for (String col : cols_name) {
-                col = attributeName.getString(col);
-                out.print("<th>" + col + "</th>");
-            }
-            out.println("</tr>");
-            for (LinkedHashMap<String, Object> row : rows) {
-                if (!((String) row.get("i_status")).strip().equals("在售")) {
+                if (!((String) row.get(status)).strip().equals("在售")) {
                     continue;
                 }
                 out.println("<tr>");
@@ -183,37 +151,6 @@ public class GaussDBQuery {
         }
         System.out.println("Goodbye!");
     }
-    public static  void printQueryRadioP(ResultSet rs, JspWriter out, String radioValueName) throws SQLException {
-        ArrayList<LinkedHashMap<String, Object>> rows = GaussDBQuery.getSelectRestult(rs);
-        ArrayList<String> cols_name = new ArrayList<>(rows.get(0).keySet());
-        try {
-            JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\idea-workspace\\demo1\\src\\main\\java\\com\\example\\servlet\\AttributDic.json"));
-            out.println("<style> table, th, td { border:1px solid black;} </style>");
-            out.println("选择购买");
-            out.println("<table>");
-            out.println("<tr>");
-            for (String col : cols_name) {
-                col = attributeName.getString(col);
-                out.print("<th>" + col + "</th>");
-            }
-            out.println("</tr>");
-            for (LinkedHashMap<String, Object> row : rows) {
-                if (!((String) row.get("p_status")).strip().equals("在售")) {
-                    continue;
-                }
-                out.println("<tr>");
-                for (String filed : row.keySet()) {
-                    out.print("<th>" + row.get(filed) + "</th>");
-                }
-                out.println("<th> <input type=\"radio\" name=\"radioSelect\" value=\""+
-                        ((String) row.get(radioValueName)).strip()+"\"> </th>");
-                out.println("</tr>");
-            }
-            out.println("</table>");
-            out.println("<br>");
-        } catch (IOException e) {
-            System.out.println("数据库字典未找到");
-        }
-    }
+
 
 }
