@@ -1,0 +1,111 @@
+
+body {
+    background-color: #f4f4f4;
+    font-family: Arial, Helvetica,sans-serif;
+    font-size: 30px;
+    font-weight: normal;
+    line-height: 1.6em;
+}
+
+.box1 {
+
+    position: absolute;
+    width: 99%;
+    height: 100%;
+
+
+    text-align: center;
+    /*block-size: 1100px;*/
+    color: #555555;
+    display: grid;
+    grid-template-areas:
+        "head     head     head     head"
+        "sidebar1 sidebar2 sidebar3 sidebar4"
+        "footer footer footer footer";
+
+}
+
+.cotainer {
+    margin: auto;
+}
+
+button {
+    background-color: #555555;
+    color: #f4f4f4;
+}
+button:hover {
+    background-color: grey;
+}
+button:active{
+    background-color: darkgrey;
+}
+
+
+.box1  h1{
+    padding-top: 200px;
+    font-family: "Times New Roman", Times, Serif;
+    font-weight: 800;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 1em;
+    word-spacing: 2em;
+}
+
+
+
+.head {
+    background-color: white;
+    background-image: url(../images/backgd.jpg);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    top: 90px;
+    border: 1px #f4f4f4 solid;
+    grid-area: head;
+    height: 100%;
+}
+
+.Button1 {
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,.3);
+    background-color: white;
+    padding: 90px;
+    border: 1px #f4f4f4 solid;
+    grid-area: sidebar1;
+    border-radius: 10px;
+
+}
+.Button2 {
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,.3);
+    background-color: white;
+    padding: 90px;
+    border: 1px #f4f4f4 solid;
+    grid-area: sidebar2;
+    border-radius: 10px;
+
+}
+.Button3 {
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,.3);
+    background-color: white;
+    padding: 90px;
+    border: 1px #f4f4f4 solid;
+    grid-area: sidebar3;
+    border-radius: 10px;
+
+}
+.Button4 {
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,.3);
+    background-color: white;
+    padding: 90px;
+    border: 1px #f4f4f4 solid;
+    grid-area: sidebar4;
+    border-radius: 10px;
+
+}
+.Bottom {
+    display: block;
+    grid-area: footer;
+    background-image: url(../images/backgd.jpg);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    height: 100px;
+
+}
