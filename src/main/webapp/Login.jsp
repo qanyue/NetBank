@@ -19,16 +19,16 @@
 
     <form action="Login" method="post">
       <div class="form">
-        <br>
-        <span style="color: black">用户名</span>
-        <input type="text" placeholder="Username" name="username">
+        <br><br>
+<%--        <span style="color: black">用户名</span>--%>
+        <input type="text" placeholder="用户名" name="username">
         <br><br>
         <!--密码-->
-        <span style="color: black">密码</span>
-        <input type="password" placeholder="Password" name="password">
-        <br><br>
+<%--        <span style="color: black">密码</span>--%>
+        <input type="password" placeholder="密码" name="password">
+        <br><br><br>
         <!--登陆按键和注册按键-->
-        <input type="radio" value="manager" name="type" id="manager">
+        <input type="radio" value="manager" name="type" id="manager" >
         <span style="color: #555555">管理员</span>
         <input type="radio" value="user" name="type" id="user">
         <label style="color: #555555">用户</label>
