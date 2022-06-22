@@ -1,4 +1,4 @@
-package com.example.demo1;
+package com.example.servlet;
 
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.io.FileUtils;

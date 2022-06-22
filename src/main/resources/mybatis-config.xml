@@ -4,14 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <!--引入database.properties文件中的信息-->
-    <properties resource="com/example/properties/db.properties"/>
+    <properties resource="db.properties"/>
 
     <settings>
         <!--选择logback日志存储文件-->
-        <setting name="logPrefix" value="com.example.mapper"/>
+<!--        <setting name="logPrefix" value="com.example.mapper."/>-->
         <!--<setting name="logImpl" value="STDOUT_LOGGING"/>-->
         <!--选择log4j日志存储文件-->
-        <!--<setting name="logImpl" value="LOG4J"/>-->
+        <setting name="logImpl" value="LOG4J2"/>
     </settings>
 
     <typeAliases>
@@ -43,12 +43,6 @@
 
 
     <mappers>
-        <!--加载sql映射文件-->
-        <!--<mapper resource="cn/twopair/mappers/UserMapper.xml"/>-->
-        <mapper resource="cn/twopair/service/ServicesMapper.xml"/>
-        <!--或使用包扫描(推荐)-->
-        <!--Mapper代理方式(包扫描）-->
-        <package name="cn.twopair.mappers"/>
-
+        <package name="com.example.service"/>
     </mappers>
 </configuration>

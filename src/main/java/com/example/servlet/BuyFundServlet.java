@@ -1,4 +1,4 @@
-package com.example.demo1;
+package com.example.servlet;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-import java.util.Locale;
 
 @WebServlet(name = "BuyFundServlet", value = "/BuyFundServlet")
 public class BuyFundServlet extends HttpServlet {
