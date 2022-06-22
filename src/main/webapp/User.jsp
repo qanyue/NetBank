@@ -183,10 +183,11 @@
 <br>
 <div>
     请选择您要进行的业务：
-    <a href="passwordchange.jsp"><button>修改密码</button></a>
     <a href="Deposit.jsp"><button>存款</button></a>
     <a href="withdraw.jsp"><button>取款</button></a>
     <a href="BuyFund.jsp"><button>购买基金</button></a>
+    <a href="BuyProduct.jsp"><button>购买理财产品</button></a>
+    <a href="BuyInsurance.jsp"><button>购买保险</button></a>
 
 </div>
 

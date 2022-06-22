@@ -11,21 +11,23 @@
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.io.PrintWriter" %>
 <html>
 <head>
-    <title>购买基金</title>
+    <title>购买保险</title>
 </head>
 <body>
-<h1> 请购买数量不要超过基金余量</h1>
 <br>
-<form action="BuyFundServlet" method="post">
+<form action="BuyInsuranceServlet" method="post">
     <%
         Statement stmt = null;
         ResultSet rs = null;
         try (Connection conn = GaussDBQuery.getConnetion()) {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-            rs = stmt.executeQuery("select * from finance.fund;");
-            GaussDBQuery.printQueryRadio(rs, out, "f_id");
+            rs = stmt.executeQuery("select * from finance.insurance;");
+//            PrintWriter printWriter = response.getWriter();
+//            GaussDBQuery.printQueryResult(rs,printWriter);
+            GaussDBQuery.printQueryRadioI(rs, out, "i_id");
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
