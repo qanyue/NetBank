@@ -1,0 +1,48 @@
+body{
+    background: url(img/1.jpg);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    text-align: center;
+
+
+    /*animation-name: login;
+    /*持续时间*/
+    /*animation-duration: 10s;
+    /*延时*/
+    /*animation-delay: 2s;
+    /*循环计数*/
+    /*animation-iteration-count: infinite;
+    /*播放状态*/
+    animation-play-state: running;
+}
+.form {
+    background: rgba(255, 255, 255, 0.5);
+    width: 400px;
+    margin: 120px auto;
+}
+h1{
+    text-align: center;
+
+}
+.login{
+    width: 200px;
+    height: 10px;
+    margin: auto;
+}
+
+/* @keyframes login{
+
+    0%{
+        background: url(img/1.jpg);
+        background-size: 100%;
+    }
+    50%
+    {
+        background: url(img/2.jpg);
+        background-size: 100%;
+    }
+    100%{
+        background: url(img/1.jpg);
+        background-size: 100%;
+    }
+} */

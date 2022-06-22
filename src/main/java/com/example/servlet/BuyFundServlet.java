@@ -25,35 +25,40 @@ public class BuyFundServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         String fundBuyNum = request.getParameter("fundBuyNum");
         String f_id = request.getParameter("radioSelect");
-        String idCard = request.getParameter("idCard");
-        String c_id = "";
+        HttpSession session = request.getSession();
+        String c_id = (String) session.getAttribute("c_id");
+        System.out.println(c_id);
+        System.out.println(f_id);
         String updateFund = "update finance.client_fund cfd set cf_sum=cf_sum+" + fundBuyNum + "from finance.client cli where " +
-                "cli.c_id = cfd.c_id and cli.c_id_card=" + idCard + ";";
-        String queryFund = "select f_id from finance.client_fund cfd, finance.client cli where c_id_card='" + idCard + "'and cli.c_id=cfd.c_id";
-        String getCid = String.format("select c_id,c_id_card from finance.client where c_id_card='%s';", idCard);
-
+                "cli.c_id = cfd.c_id and cli.c_id='" + c_id + "' and cfd.f_id = '" + f_id + "'; ";
+        String queryFund = "select * from finance.client_fund cfd, finance.client cli " +
+                "where cfd.c_id = cli.c_id and cli.c_id = '" + c_id + "' and cfd.f_id = '" + f_id + "';";
+        String remainFund = "SELECT f_remain from finance.fund where fund.f_id = '" + f_id + "';";
+        String buyFund = "UPDATE finance.fund SET f_remain = f_remain - " + fundBuyNum + "where f_id = '" + f_id + "';";
         Statement stmt = null;
         ResultSet rs = null;
         try (Connection conn = GaussDBQuery.getConnetion()) {
-            stmt = conn.createStatement();
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
 //            System.out.println(idCard);
 //            System.out.println(getCid);
-            rs = stmt.executeQuery(getCid);
+            rs = stmt.executeQuery(remainFund);
+            double remain = 0;
             if(rs.next()){
-                c_id = rs.getString("c_id");
-                if (c_id == null) {
-                    out.println("<h1>对不起，查找不到你的身份证");
-                    return;
-                }
+                remain = rs.getDouble("f_remain");
             }
-
+            if(remain < Double.parseDouble(fundBuyNum)){
+                out.println("<h2>余量不足</h2>");
+                return ;
+            }
             String insertFund = String.format("insert into finance.client_fund values('%s','%s','1','盈利','0','%s',%s,'20');", c_id.strip(), f_id.strip(), LocalDate.now(), fundBuyNum);
 //            System.out.println(insertFund);
             rs = stmt.executeQuery(queryFund);
-            if (rs.getRow() != 0) {
+            if(rs.next()){
+                stmt.executeUpdate(buyFund);
                 stmt.executeUpdate(updateFund);
                 rs.close();
-            } else {
+            }else{
+                stmt.executeUpdate(buyFund);
                 stmt.executeUpdate(insertFund);
                 rs.close();
             }
@@ -61,7 +66,7 @@ public class BuyFundServlet extends HttpServlet {
             out.println("<h2>购买成功</h2>");
             out.println("您的基金资产目前如下:<br>");
             GaussDBQuery.printQueryResult(rs, out);
-            out.println("<br><a href=\"index.jsp\"><button>返回主页</button></a>");
+            out.println("<br><a href=\"User.jsp\"><button>返回主页</button></a>");
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
