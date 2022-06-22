@@ -148,7 +148,7 @@ public class DaoUtil {
         UserLogin userLogin = new UserLogin();
         userLogin.setId("01");
         userLogin.setPassword("123456");
-        DaoUtil.userLogin(userLogin);
+        DaoUtil.modifyUserPassword(userLogin);
     }
 }
 
