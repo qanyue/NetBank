@@ -17,20 +17,24 @@ public class Deposit extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
-        out.println("<meta http-equiv=\"refresh\" content=\"2;URL=index.jsp\">");
+        out.println("<meta http-equiv=\"refresh\" content=\"2;URL=User.jsp\">");
         String cardNum = request.getParameter("card_num");
         String depositNum = request.getParameter("depositNum");
         String password = request.getParameter("password");
         String sql = "UPDATE finance.card set card.ca_deposit=card.ca_deposit+"+depositNum+" where card.ca_id="+cardNum;
-
+        String checksql = "select * from finance.card where card.ca_id = '" + cardNum + "' and card.ca_password = '" + password + "';";
         try(Connection conn = GaussDBQuery.getConnetion()) {
             Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(checksql);
+            if(!rs.next()){
+                out.println("<h1>输入的账号或密码错误，请重试");
+                return;
+            }
            if(stmt.executeUpdate(sql)>0) {
                out.println("<h1>存款成功");
            } else  {
                out.println("<h1>存款失败");
            }
-
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
