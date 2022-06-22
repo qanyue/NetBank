@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--名称空间-->
+<mapper namespace="com.example.service.UserServices">
+
+    <!--登录账号-->
+    <resultMap id="userResultMap" type="com.example.model.UserLogin">
+        <id property="id" column="c_id" />
+        <result property="password" column="c_password"/>
+    </resultMap>
+    <select id="login" parameterType="com.example.model.UserLogin" resultMap="userResultMap">
+        select * from finance.users where c_id=#{id} and c_password=#{password}
+    </select>
+    <!---查询保险-->
+    <select id="InsuranceQuery" parameterType="com.example.model.UserLogin" resultType="com.example.model.Client_Insurance">
+        select *
+        from finance.client_insurance where c_id=#{id};
+    </select>
+    <!--买保险-->
+    <insert id="buyInsurance" parameterType="com.example.model.Client_Insurance">
+        INSERT INTO finance.client_insurance(c_id,i_id,ci_number,ci_status,ci_income,ci_time,ci_sum,ci_year)
+        VALUES  (#{c_id},#{i_id},#{ci_number},#{ci_status},#{ci_income},#{ci_time},#{ci_sum},#{ci_year});
+    </insert>
+    <!--查询理财产品-->
+    <select id="ProductQuery" parameterType="com.example.model.UserLogin" resultType="com.example.model.Client_Products">
+        select *
+        from finance.client_products where c_id=#{id};
+    </select>
+    <!--买理财产品-->
+    <insert id="buyProducts" parameterType="com.example.model.Client_Products">
+        INSERT INTO finance.client_products(c_id,p_id,cp_number,cp_status,cp_income,cp_time,cp_sum)
+        VALUES  (#{c_id},#{p_id},#{cp_number},#{cp_status},#{cp_income},#{cp_time},#{cp_sum});
+    </insert>
+
+
+    <!--开卡-->
+    <insert id="openCard" parameterType="com.example.model.Card" >
+        INSERT INTO finance.card(ca_id,c_id,ca_password,ca_type,ca_deposit,ca_status)
+        VALUES (#{ca_id},#{c_id},#{capassword},#{ca_type},#{ca_deposit},#{ca_status})
+    </insert>
+
+
+    <!--修改用户密码-->
+    <update id="changeUserPassword" parameterType="com.example.model.UserInfo">
+        UPDATE finance.users set c_password = #{password} where c_id=#{id}
+    </update>
+
+
+
+</mapper>
