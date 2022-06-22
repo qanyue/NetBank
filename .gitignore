@@ -1,7 +1,13 @@
 target/
+<<<<<<< HEAD
+.mvn/wrapper/maven-wrapper.jar
+**/src/main/**/target/
+**/src/test/**/target/
+=======
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+>>>>>>> 3735533 (login)
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
