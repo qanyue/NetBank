@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.example.demo1.GaussDBQuery" %>
+<%@ page import="com.example.servlet.GaussDBQuery" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.SQLException" %><%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
@@ -55,7 +55,7 @@
             ArrayList<LinkedHashMap<String, Object>> cardrows = GaussDBQuery.getSelectRestult(cardRs);
             ArrayList<String> cardcols_name = new ArrayList<>(cardrows.get(0).keySet());
             try {
-                JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\idea-workspace\\demo1\\src\\main\\java\\com\\example\\demo1\\AttributDic.json"));
+                JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\idea-workspace\\demo1\\src\\main\\java\\com\\example\\servlet\\AttributDic.json"));
                 out.println("<style> table, th, td { border:1px solid black;} </style>");
                 out.println("<table>");
                 out.println("<tr>");
@@ -95,7 +95,7 @@
             ArrayList<LinkedHashMap<String, Object>> prrows = GaussDBQuery.getSelectRestult(productRs);
             ArrayList<String> prcols_name = new ArrayList<>(prrows.get(0).keySet());
             try {
-                JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\idea-workspace\\demo1\\src\\main\\java\\com\\example\\demo1\\AttributDic.json"));
+                JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\idea-workspace\\demo1\\src\\main\\java\\com\\example\\servlet\\AttributDic.json"));
                 out.println("<style> table, th, td { border:1px solid black;} </style>");
                 out.println("<table>");
                 out.println("<tr>");
@@ -124,7 +124,7 @@
             ArrayList<LinkedHashMap<String, Object>> furows = GaussDBQuery.getSelectRestult(fundRs);
             ArrayList<String> fucols_name = new ArrayList<>(furows.get(0).keySet());
             try {
-                JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\idea-workspace\\demo1\\src\\main\\java\\com\\example\\demo1\\AttributDic.json"));
+                JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\idea-workspace\\demo1\\src\\main\\java\\com\\example\\servlet\\AttributDic.json"));
                 out.println("<style> table, th, td { border:1px solid black;} </style>");
                 out.println("<table>");
                 out.println("<tr>");
@@ -153,7 +153,7 @@
             ArrayList<LinkedHashMap<String, Object>> inrows = GaussDBQuery.getSelectRestult(insuranceRs);
             ArrayList<String> incols_name = new ArrayList<>(inrows.get(0).keySet());
             try {
-                JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\idea-workspace\\demo1\\src\\main\\java\\com\\example\\demo1\\AttributDic.json"));
+                JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\idea-workspace\\demo1\\src\\main\\java\\com\\example\\servlet\\AttributDic.json"));
                 out.println("<style> table, th, td { border:1px solid black;} </style>");
                 out.println("<table>");
                 out.println("<tr>");

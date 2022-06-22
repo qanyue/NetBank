@@ -1,4 +1,4 @@
-package com.example.demo1;
+package com.example.servlet;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-import java.util.Locale;
 
 @WebServlet(name = "BuyFundServlet", value = "/BuyFundServlet")
 public class BuyFundServlet extends HttpServlet {
@@ -31,7 +30,7 @@ public class BuyFundServlet extends HttpServlet {
         System.out.println(c_id);
         System.out.println(f_id);
         String updateFund = "update finance.client_fund cfd set cf_sum=cf_sum+" + fundBuyNum + "from finance.client cli where " +
-                "cli.c_id = cfd.c_id and cli.c_id='" + c_id + "';";
+                "cli.c_id = cfd.c_id and cli.c_id='" + c_id + "' and cfd.f_id = '" + f_id + "'; ";
         String queryFund = "select * from finance.client_fund cfd, finance.client cli " +
                 "where cfd.c_id = cli.c_id and cli.c_id = '" + c_id + "' and cfd.f_id = '" + f_id + "';";
         Statement stmt = null;

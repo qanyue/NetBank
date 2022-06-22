@@ -1,4 +1,4 @@
-package com.example.demo1;
+package com.example.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -37,7 +36,7 @@ public class Login extends HttpServlet {
                     return;
                 }
                 System.out.println(2);
-                response.sendRedirect("index.jsp");//管理员界面：用户信息增删改查、银行卡信息增删改查、理财产品信息增删改查
+                response.sendRedirect("index.jsp");
             }else if("user".equals(type)){
                 rs = stmt.executeQuery(userSql);
                 if(!rs.next()){

@@ -1,4 +1,4 @@
-package com.example.demo1;
+package com.example.servlet;
 
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.io.FileUtils;
@@ -41,7 +41,7 @@ public class GaussDBQuery {
         ArrayList<LinkedHashMap<String, Object>> rows = GaussDBQuery.getSelectRestult(rs);
         ArrayList<String> cols_name = new ArrayList<>(rows.get(0).keySet());
         try {
-        JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\idea-workspace\\demo1\\src\\main\\java\\com\\example\\demo1\\AttributDic.json"));
+        JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\idea-workspace\\demo1\\src\\main\\java\\com\\example\\servlet\\AttributDic.json"));
         out.println("<style> table, th, td { border:1px solid black;} </style>");
         out.println("<table>");
         out.println("<tr>");
@@ -70,7 +70,7 @@ public class GaussDBQuery {
         ArrayList<LinkedHashMap<String, Object>> rows = GaussDBQuery.getSelectRestult(rs);
         ArrayList<String> cols_name = new ArrayList<>(rows.get(0).keySet());
         try {
-            JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\idea-workspace\\demo1\\src\\main\\java\\com\\example\\demo1\\AttributDic.json"));
+            JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\idea-workspace\\demo1\\src\\main\\java\\com\\example\\servlet\\AttributDic.json"));
             out.println("<style> table, th, td { border:1px solid black;} </style>");
             out.println("选择购买");
             out.println("<table>");
