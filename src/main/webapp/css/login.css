@@ -1,0 +1,71 @@
+body{
+    background-image: url(../images/background.jpeg);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+
+    text-align: center;
+
+
+
+    /*animation-name: login;
+    /*持续时间*/
+    /*animation-duration: 10s;
+    /*延时*/
+    /*animation-delay: 2s;
+    /*循环计数*/
+    /*animation-iteration-count: infinite;
+    /*播放状态*/
+    /*animation-play-state: running;*/
+}
+
+.form{
+    /*background: rgba(255, 255, 255, 0.5);*/
+    border: #555555 1px solid;
+    border-radius: 10px;
+    background-color: white;
+    width: 700px;
+    text-align: center;
+    font-size: 50px;
+    height: 500px;
+
+
+}
+
+h1{
+    font-family: Arial, Helvetica,sans-serif;
+    text-align: center;
+    font-weight: 600;
+    font-size: 100px;
+
+    letter-spacing: 2em;
+
+}
+
+.login{
+    width: 800px;
+    height: 100%;
+    margin: auto;
+}
+
+.button {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-image: url(../images/background.jpeg);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+
+    padding-right: 80px;
+
+}
+button {
+
+    background-color: #555555;
+    color: #f4f4f4;
+    font-size: 50px;
+}
+button:hover {
+    background-color: grey;
+}
+button:active{
+    background-color: darkgrey;
+}
