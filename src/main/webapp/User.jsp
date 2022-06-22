@@ -52,35 +52,38 @@
         <br>
         <%
             cardRs = stmt.executeQuery(cardSql);
-            ArrayList<LinkedHashMap<String, Object>> cardrows = GaussDBQuery.getSelectRestult(cardRs);
-            ArrayList<String> cardcols_name = new ArrayList<>(cardrows.get(0).keySet());
-            try {
-                JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\idea-workspace\\demo1\\src\\main\\java\\com\\example\\servlet\\AttributDic.json"));
-                out.println("<style> table, th, td { border:1px solid black;} </style>");
-                out.println("<table>");
-                out.println("<tr>");
-                for(String col:cardcols_name){
-                    if("ca_password".equals(col)){
-                        continue;
-                    }
-                    col = attributeName.getString(col);
-//            System.out.println(col);
-                    out.print("<th>"+col+ "</th>");
-                }
-                out.println("</tr>");
-                for(LinkedHashMap<String,Object> row: cardrows){
-                    row.remove("ca_password");
+            if(cardRs.next()){
+                ArrayList<LinkedHashMap<String, Object>> cardrows = GaussDBQuery.getSelectRestult(cardRs);
+                ArrayList<String> cardcols_name = new ArrayList<>(cardrows.get(0).keySet());
+                try {
+                    JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\idea-workspace\\demo1\\src\\main\\java\\com\\example\\servlet\\AttributDic.json"));
+                    out.println("<style> table, th, td { border:1px solid black;} </style>");
+                    out.println("<table>");
                     out.println("<tr>");
-                    for(String filed:row.keySet()){
-                        out.print("<th>"+row.get(filed)+"</th>");
+                    for(String col:cardcols_name){
+                        if("ca_password".equals(col)){
+                            continue;
+                        }
+                        col = attributeName.getString(col);
+//            System.out.println(col);
+                        out.print("<th>"+col+ "</th>");
                     }
                     out.println("</tr>");
+                    for(LinkedHashMap<String,Object> row: cardrows){
+                        row.remove("ca_password");
+                        out.println("<tr>");
+                        for(String filed:row.keySet()){
+                            out.print("<th>"+row.get(filed)+"</th>");
+                        }
+                        out.println("</tr>");
+                    }
+                    out.println("</table>");
+                    out.println("<br>");
+                } catch (IOException e) {
+                    System.out.println("数据库字典未找到");
                 }
-                out.println("</table>");
-                out.println("<br>");
-            } catch (IOException e) {
-                System.out.println("数据库字典未找到");
             }
+
         %>
     </div>
 <br>
