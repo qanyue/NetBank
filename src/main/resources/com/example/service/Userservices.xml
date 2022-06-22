@@ -15,7 +15,7 @@
         select * from finance.users where c_id=#{id} and c_password=#{password}
     </select>
     <!---查询保险-->
-    <select id="InsuranceQuery" parameterType="com.example.model.UserLogin" resultType="com.example.model.Client_Insurance">
+    <select id="c_InsuranceQuery" parameterType="String" resultType="com.example.model.Client_Insurance">
         select *
         from finance.client_insurance where c_id=#{id};
     </select>
@@ -24,8 +24,12 @@
         INSERT INTO finance.client_insurance(c_id,i_id,ci_number,ci_status,ci_income,ci_time,ci_sum,ci_year)
         VALUES  (#{c_id},#{i_id},#{ci_number},#{ci_status},#{ci_income},#{ci_time},#{ci_sum},#{ci_year});
     </insert>
+    <!--删除保险-->
+    <delete id="c_DeleteInsurance" parameterType="com.example.model.Client_Insurance">
+        DELETE  FROM  finance.client_insurance where c_id=#{c_id} and i_id = #{i_id}
+    </delete>
     <!--查询理财产品-->
-    <select id="ProductQuery" parameterType="com.example.model.UserLogin" resultType="com.example.model.Client_Products">
+    <select id="c_ProductQuery" parameterType="String" resultType="com.example.model.Client_Products">
         select *
         from finance.client_products where c_id=#{id};
     </select>
@@ -34,14 +38,16 @@
         INSERT INTO finance.client_products(c_id,p_id,cp_number,cp_status,cp_income,cp_time,cp_sum)
         VALUES  (#{c_id},#{p_id},#{cp_number},#{cp_status},#{cp_income},#{cp_time},#{cp_sum});
     </insert>
-
+    <!--删除理财产品-->
+    <delete id="c_DeleteProducts" parameterType="com.example.model.Client_Products" >
+        DELETE  FROM  finance.client_products where c_id=#{c_id} and p_id = #{p_id}
+    </delete>
 
     <!--开卡-->
     <insert id="openCard" parameterType="com.example.model.Card" >
         INSERT INTO finance.card(ca_id,c_id,ca_password,ca_type,ca_deposit,ca_status)
         VALUES (#{ca_id},#{c_id},#{capassword},#{ca_type},#{ca_deposit},#{ca_status})
     </insert>
-
 
     <!--修改用户密码-->
     <update id="changeUserPassword" parameterType="com.example.model.UserInfo">

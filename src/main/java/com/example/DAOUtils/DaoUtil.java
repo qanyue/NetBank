@@ -1,9 +1,6 @@
 package com.example.DAOUtils;
 
-import com.example.model.Card;
-import com.example.model.Client_Insurance;
-import com.example.model.UserInfo;
-import com.example.model.UserLogin;
+import com.example.model.*;
 import com.example.service.SysServices;
 import com.example.service.UserServices;
 import org.apache.ibatis.io.Resources;
@@ -134,6 +131,7 @@ public class DaoUtil {
         SqlSession sqlSession = DaoUtil.getSqlSession();
         try {
            UserServices services =  sqlSession.getMapper(UserServices.class);
+
             return false;
         }catch (Exception e ){
             sqlSession.rollback();
@@ -142,13 +140,32 @@ public class DaoUtil {
         }finally {
             sqlSession.close();
         }
-
     }
+    public static  boolean insertInsurnace(Client_Insurance client_insurance){
+        SqlSession sqlSession = DaoUtil.getSqlSession();
+        try {
+            UserServices services = sqlSession.getMapper(UserServices.class);
+            int buy_insurance = services.buyInsurance(client_insurance);
+            if(buy_insurance >=1 ){
+                System.out.println(client_insurance.getC_id() + "购买" + client_insurance.getI_id() + "保险");
+                return  true;
+            }
+            return false;
+
+        }catch (Exception e ){
+            e.printStackTrace();
+            sqlSession.rollback();
+            return false;
+        }finally {
+            sqlSession.close();
+        }
+    }
+
     public static void  main(String[] args){
         UserLogin userLogin = new UserLogin();
         userLogin.setId("01");
-        userLogin.setPassword("123456");
-        DaoUtil.userLogin(userLogin);
+        userLogin.setPassword("12345678");
+        DaoUtil.modifyUserPassword(userLogin);
     }
 }
 
