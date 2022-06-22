@@ -55,13 +55,14 @@ button:active{
 
 
 .head {
+    background-color: white;
     background-image: url(../images/backgd.jpg);
     background-size: 100% 100%;
     background-attachment: fixed;
     top: 90px;
     border: 1px #f4f4f4 solid;
     grid-area: head;
-    height: 500px;
+    height: 100%;
 }
 
 .Button1 {

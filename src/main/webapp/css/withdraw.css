@@ -1,0 +1,129 @@
+body {
+    background-color: white;
+
+}
+.form {
+    font-family: "Times New Roman", Times, Serif;
+    font-style: normal;
+    text-transform: uppercase;
+
+
+}
+.box1 {
+
+    position: absolute;
+    width: 98%;
+    height: 100%;
+
+
+    text-align: center;
+    /*block-size: 1100px;*/
+    color: #555555;
+    display: grid;
+    grid-template-areas:
+        "head1 head1 head1 head1"
+        "head2 head2 head2 sidebar"
+        "form form form sidebar"
+        "form form form ."
+        "form form form ."
+        "form form form .";
+
+}
+.form{
+    padding-top: 50px;
+
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.6em;
+
+    width: 99%;
+    background-color: #f4f4f4;
+    grid-area: form;
+    border-left: 1px #555555 solid;
+    border-bottom: 1px #555555 solid;
+
+}
+
+.cotainer {
+    width: 98%;
+    margin: auto;
+}
+
+
+.head1 {
+    background-image: url(../images/backgd.jpg);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    grid-area: head1;
+
+}
+
+.head2 {
+    padding-top: 50px;
+
+    background-color: white;
+
+    font-family: "Times New Roman", Times, Serif;
+    text-align: center;
+    font-size: 50px;
+    line-height: 1.6em;
+
+    border-bottom:1px #555555 solid;
+    border-left:1px #555555 solid;
+
+    font-weight: 800;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 1em;
+    word-spacing: 2em;
+
+    grid-area: head2;
+
+}
+
+.Sidebar {
+    background-color: #f4f4f4;
+    grid-area: sidebar;
+    border: 1px #555555 solid;
+}
+
+
+
+input[type=submit] {
+    background-color: #555555;
+    color: #f4f4f4;
+    border-radius: 4px;
+    font-size: 30px;
+
+}
+input[type=submit]:hover {
+    background-color: grey;
+}
+input[type=submit]:active{
+    background-color: darkgrey;
+}
+
+
+input[type=number] {
+    color: #555555;
+    width: 400px;
+    height:30px;
+}
+
+input[type=password] {
+    color: #555555;
+    width: 400px;
+    height:30px;
+}
+
+
+button {
+    background-color: #555555;
+    color: #f4f4f4;
+}
+button:hover {
+    background-color: grey;
+}
+button:active{
+    background-color: darkgrey;
+}
