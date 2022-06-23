@@ -28,9 +28,9 @@
                 <input type="password" placeholder="密码" name="password">
                 <br><br><br>
                 <!--登陆按键和注册按键-->
-                <input type="radio" value="manager" name="type" id="manager" >
+                <input type="radio" value="manager" name="type" id="manager"  >
                 <span style="color: #555555">管理员</span>
-                <input type="radio" value="user" name="type" id="user">
+                <input type="radio" value="user" name="type" id="user" checked>
                 <label style="color: #555555">用户</label>
                 <br><br>
                 <div class="button">

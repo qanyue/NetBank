@@ -34,8 +34,9 @@ public class passwordchange extends HttpServlet {
         UserLogin user = new UserLogin(username,password);
         if(DaoUtil.modifyUserPassword(user)){
           out.println("<h1>修改密码成功");
-//          response.sendRedirect("Login.jsp");
-      }
+      }else {
+            out.println("<h1>修改密码出错");
+        }
 
     }
 

@@ -44,8 +44,9 @@
             <h1>改变密码</h1>
             <br><br>
             <label>请输入新密码:<input type="password" name="newpwd" id="newpwd">
-        <span style="color:red;">*</span>
-    </label><br>
+                <span style="color:red;">*</span>
+            </label>
+            <br><br>
 
     <label>请确认密码:<input type="password" id= "confirmpwd" name="confirmpwd" >
         <span style="color:red;">*</span>

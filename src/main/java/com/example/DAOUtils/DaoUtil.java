@@ -30,6 +30,7 @@ public class DaoUtil {
         try {
             inputStream = Resources.getResourceAsStream(resource);
         } catch (IOException e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
     }
@@ -112,8 +113,10 @@ public class DaoUtil {
             if(modify >= 1){
                 System.out.println(userLogin.getId()+"修改密码成功"+modify);
                 return true;
-            }
+            }else {
+                System.out.println("修改米麦失败");
                 return false;
+            }
         } catch (Exception exception) {
             sqlSession.rollback();
             exception.printStackTrace();
@@ -346,6 +349,8 @@ public class DaoUtil {
     }
 
     public  static void main(String[] args){
+        UserLogin user = new UserLogin("11","1234567");
+        DaoUtil.modifyUserPassword(user);
         System.out.println(checkDate("Tue Aug 18 00:00:00 CST 2020"));
     }
 

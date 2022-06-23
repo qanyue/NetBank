@@ -56,7 +56,7 @@ public class GaussDBQuery {
         ArrayList<String> cols_name = new ArrayList<>(rows.get(0).keySet());
 
         try {
-        JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\AttributDic.json"));
+            JSONObject attributeName = GaussDBQuery.getAttributeName(new File(GaussDBQuery.jsonPath()));
         out.println("<style> table, th, td { border:1px solid #b4aaaa;} </style>");
         out.println("<table>");
         out.println("<tr>");
@@ -86,7 +86,7 @@ public class GaussDBQuery {
         ArrayList<LinkedHashMap<String, Object>> rows = GaussDBQuery.getSelectRestult(rs);
         ArrayList<String> cols_name = new ArrayList<>(rows.get(0).keySet());
         try {
-            JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\AttributDic.json"));
+            JSONObject attributeName = GaussDBQuery.getAttributeName(new File(GaussDBQuery.jsonPath()));
             out.println("<style> table, th, td { border:1px solid #b4aaaa;} </style>");
             out.println("选择购买");
             out.println("<table>");
