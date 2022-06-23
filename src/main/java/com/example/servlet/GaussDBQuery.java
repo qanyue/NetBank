@@ -151,6 +151,36 @@ public class GaussDBQuery {
         }
         System.out.println("Goodbye!");
     }
+    public static String sqlhandle(String sql,ArrayList<String> infos,ArrayList<String> cols,String ws){
+        if(ws.equals("set")){
+            boolean flag = false;
+            for(int i = 0 ; i< cols.size() ; i++){
+                if(cols.get(i).equals("c_id")){
+                    continue;
+                }
+                if(!infos.get(i).isEmpty() && !flag){
+                    sql = sql + " " + ws + " " + cols.get(i) + "='" + infos.get(i) + "'";
+                    flag = true;
+                }else if(!infos.get(i).isEmpty() && flag){
+                    sql = sql + " , " + cols.get(i) + "='" + infos.get(i) + "'";
+                }
+            }
+        }else{
+            boolean flag = false;
+            for(int i = 0 ; i< cols.size() ; i++){
+                if(!infos.get(i).isEmpty() && !flag){
+                    sql = sql + " " + ws + " " + cols.get(i) + "='" + infos.get(i) + "'";
+                    flag = true;
+                }else if(!infos.get(i).isEmpty() && flag){
+                    sql = sql + " and " + cols.get(i) + "='" + infos.get(i) + "'";
+                }
+            }
+            sql = sql + ";";
+        }
 
+
+
+        return sql;
+    }
 
 }
