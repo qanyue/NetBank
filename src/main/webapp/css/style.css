@@ -1,0 +1,103 @@
+.box{
+    width: 100%;
+    margin-top: 200px;
+    margin-bottom: 30px;
+    text-align: center;
+    border: 2px cornflowerblue;
+    box-sizing: border-box;
+}
+.box1{
+    font-family: "Times New Roman",Times,serif;
+    font-weight: 800;
+    letter-spacing: 10px;
+    border:1px;
+
+}
+.box1 h1{
+    text-align: center;
+
+}
+.box2{
+    width: 25%;
+    float: left;
+    border:1px black;
+}
+
+button{
+    background-color: blue;
+    color: aliceblue;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+button:hover{
+    background-color: red;
+}
+
+button:active{
+    background-color: #fff;
+}
+
+
+.total{
+    text-align: center;
+    padding-top: 40px;
+}
+
+.total h1{
+    padding-bottom: 50px;
+}
+
+.admins{
+    float: left;
+    width:20%;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+.adminsclient{
+    background-image: url("#");
+    float: left;
+    width:20%;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+.adminscard{
+    background-image: url("/picture/card.png");
+    float: left;
+    width:20%;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+.adminsinsurance{
+    background-image: url("/picture/Insurance.png");
+    float: left;
+    width:20%;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+.adminsfund{
+    background-image: url("/picture/Fund.png");
+    float: left;
+    width:20%;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+.adminsproducts{
+    background-image: url("/picture/product.png");
+    float: left;
+    width:20%;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}

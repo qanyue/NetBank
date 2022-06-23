@@ -1,0 +1,39 @@
+.adminclientadd{
+    text-align: center;
+    padding-top: 40px;
+    float: left;
+}
+.adminbox .distance{
+    font-family: 宋体;font-size:18px;color: black;
+    background-color: darkgray;
+    vertical-align: middle;
+    width: 60%;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 20px;
+}
+.tom{
+    font-family: 宋体;font-size:18px;color: black;
+    text-align: center;
+}
+
+.adminbox{
+    text-align: center;
+    margin-top: 50px;
+    width: 100%;
+    height: 300px;
+    text-align: center;
+
+}
+h1{
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+

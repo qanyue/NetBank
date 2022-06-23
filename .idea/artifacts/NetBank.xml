@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" build-on-make="true" name="NetBank">
+    <output-path>$PROJECT_DIR$/out/artifacts/NetBank</output-path>
+    <root id="root">
+      <element id="archive" name="NetBank.jar">
+        <element id="module-output" name="NetBank" />
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -41,7 +41,7 @@ public class GaussDBQuery {
         ArrayList<LinkedHashMap<String, Object>> rows = GaussDBQuery.getSelectRestult(rs);
         ArrayList<String> cols_name = new ArrayList<>(rows.get(0).keySet());
         try {
-        JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\idea-workspace\\demo1\\src\\main\\java\\com\\example\\demo1\\AttributDic.json"));
+        JSONObject attributeName = GaussDBQuery.getAttributeName(new File("E:\\tomcat\\AttributDic.json"));
         out.println("<style> table, th, td { border:1px solid black;} </style>");
         out.println("<table>");
         out.println("<tr>");
