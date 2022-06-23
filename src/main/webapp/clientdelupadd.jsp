@@ -14,28 +14,10 @@
 <html>
 <head>
     <title>管理员对用户数据的增删改</title>
-    <link rel="stylesheet" href="./css/admin.css">
-    <style>
-        .distance{
-            font-family: 宋体;font-size:18px;color: black;
-            border :3px red;
-            text-align: center;
-        }
-        .tom{
-            font-family: 宋体;font-size:18px;color: black;
-        }
-        h1{
-            text-align: center;
+    <link rel="stylesheet" href="./css/client_manager.css">
 
-            padding-top: 20px;
-            padding-bottom: 20px;
-
-        }
-
-    </style>
 </head>
-<body background="picture/background.jpeg">
-<h1>用户信息增删改查界面</h1>
+<body>
 <%
     Statement stmt = null;
     ResultSet rs = null;
@@ -47,6 +29,50 @@
         e.printStackTrace();
     }
 %>
+
+<div class="cotainer">
+
+    <div class="box1">
+
+        <div class="head1"><br><br><br></div>
+
+        <div class="head2">
+            <h1>用户信息管理</h1>
+        </div>
+
+        <div class="Sidebar">
+<%--            <a href="User.jsp"><img src="images/Home.png"></a>--%>
+        </div>
+
+        <div class="form">
+            <form action="" class="distance" name="form1">
+
+                客户编号：<br>
+                <input type="text" class="tom" name="id"><br><br>
+                客户名称：<br>
+                <input type="text" class="tom" name="name" ><br><br>
+                客户邮箱：<br>
+                <input type="text" class="tom" name="mail" ><br><br>
+                客户身份证：<br>
+                <input type="text" class="tom" name="card" ><br><br>
+                客户手机号：<br>
+                <input type="text" class="tom" name="phone" ><br><br>
+                <input type="submit" class="tom" name="search" value="搜索" onclick="form1.action='clientsearch';form1.submit();"></form>
+            <input type="submit" class="tom" name="delete" value="删除" onclick="form1.action='clientdelete';form1.submit();"></form>
+            <input type="submit" class="tom" name="add" value="增加" onclick="form1.action='clientupdate';form1.submit();"></form>
+            <input type="submit" class="tom" name="update" value="更新" onclick="form1.action='clientupdate';form1.submit();">
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
 
 <%/*
         out.print("<table border = 1>");
@@ -70,25 +96,6 @@
         }
         out.print("</table>");*/
 %>
-<div class="distance">
-    <form action="" class="distance" name="form1">
-                在对应框填入对应内容<br>
-        客户编号：
-        <input type="text" class="tom" name="id"><br>
-        客户名称：
-        <input type="text" class="tom" name="name" ><br>
-        客户邮箱：
-        <input type="text" class="tom" name="mail" ><br>
-        客户身份证：
-        <input type="text" class="tom" name="card" ><br>
-        客户手机号：
-        <input type="text" class="tom" name="phone" ><br>
-        <input type="submit" class="tom" name="search" value="搜索" onclick="form1.action='clientsearch';form1.submit();"></form>
-        <input type="submit" class="tom" name="delete" value="删除" onclick="form1.action='clientdelete';form1.submit();"></form>
-        <input type="submit" class="tom" name="add" value="增加" onclick="form1.action='clientupdate';form1.submit();"></form>
-        <input type="submit" class="tom" name="update" value="更新" onclick="form1.action='clientupdate';form1.submit();">
-    </form>
-</div>
   <%--  <div class="right">
     <form action="" class="right">
         <h2>删除功能区</h2><br>

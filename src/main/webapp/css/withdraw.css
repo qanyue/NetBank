@@ -123,16 +123,18 @@ input[type=password] {
 }
 
 
-button {
-    background-color: #555555;
-    color: #f4f4f4;
-}
-button:hover {
-    background-color: grey;
-}
-button:active{
-    background-color: darkgrey;
-}
+/*button {*/
+/*    background-color: #555555;*/
+/*    color: #f4f4f4;*/
+/*}*/
+/*button:hover {*/
+/*    background-color: grey;*/
+/*}*/
+/*button:active{*/
+/*    background-color: darkgrey;*/
+/*}*/
+
+
 input:focus{
     border-color: #66afe9;
     outline: 0;
