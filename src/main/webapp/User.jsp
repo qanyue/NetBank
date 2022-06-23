@@ -51,11 +51,11 @@
         <br>
         <br>
         <%
-            cardRs = stmt.executeQuery(cardSql);
-            ArrayList<LinkedHashMap<String, Object>> cardrows = GaussDBQuery.getSelectRestult(cardRs);
-            ArrayList<String> cardcols_name = new ArrayList<>(cardrows.get(0).keySet());
             try {
-                JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\idea-workspace\\demo1\\src\\main\\java\\com\\example\\servlet\\AttributDic.json"));
+                cardRs = stmt.executeQuery(cardSql);
+                ArrayList<LinkedHashMap<String, Object>> cardrows = GaussDBQuery.getSelectRestult(cardRs);
+                ArrayList<String> cardcols_name = new ArrayList<>(cardrows.get(0).keySet());
+                JSONObject attributeName = GaussDBQuery.getAttributeName(new File(GaussDBQuery.jsonPath()));
                 out.println("<style> table, th, td { border:1px solid black;} </style>");
                 out.println("<table>");
                 out.println("<tr>");
@@ -64,7 +64,6 @@
                         continue;
                     }
                     col = attributeName.getString(col);
-//            System.out.println(col);
                     out.print("<th>"+col+ "</th>");
                 }
                 out.println("</tr>");
@@ -79,7 +78,10 @@
                 out.println("</table>");
                 out.println("<br>");
             } catch (IOException e) {
-                System.out.println("数据库字典未找到");
+                System.out.println("数据库字典未找到1");
+                e.printStackTrace();
+            }catch (Exception e){
+                e.printStackTrace();
             }
         %>
     </div>
@@ -94,8 +96,8 @@
 
             ArrayList<LinkedHashMap<String, Object>> prrows = GaussDBQuery.getSelectRestult(productRs);
             ArrayList<String> prcols_name = new ArrayList<>(prrows.get(0).keySet());
-            try {
-                JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\idea-workspace\\demo1\\src\\main\\java\\com\\example\\servlet\\AttributDic.json"));
+//            try {
+                JSONObject attributeName = GaussDBQuery.getAttributeName(new File(GaussDBQuery.jsonPath()));
                 out.println("<style> table, th, td { border:1px solid black;} </style>");
                 out.println("<table>");
                 out.println("<tr>");
@@ -115,16 +117,14 @@
                 }
                 out.println("</table>");
                 out.println("<br>");
-            } catch (IOException e) {
-                System.out.println("数据库字典未找到");
-            }
+
         }
         fundRs = stmt.executeQuery(fundSql);
         if(fundRs.next()){
             ArrayList<LinkedHashMap<String, Object>> furows = GaussDBQuery.getSelectRestult(fundRs);
             ArrayList<String> fucols_name = new ArrayList<>(furows.get(0).keySet());
             try {
-                JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\idea-workspace\\demo1\\src\\main\\java\\com\\example\\servlet\\AttributDic.json"));
+                JSONObject attributeName = GaussDBQuery.getAttributeName(new File(GaussDBQuery.jsonPath()));
                 out.println("<style> table, th, td { border:1px solid black;} </style>");
                 out.println("<table>");
                 out.println("<tr>");
@@ -145,6 +145,7 @@
                 out.println("</table>");
                 out.println("<br>");
             } catch (IOException e) {
+                e.printStackTrace();
                 System.out.println("数据库字典未找到");
             }
         }
@@ -153,7 +154,7 @@
             ArrayList<LinkedHashMap<String, Object>> inrows = GaussDBQuery.getSelectRestult(insuranceRs);
             ArrayList<String> incols_name = new ArrayList<>(inrows.get(0).keySet());
             try {
-                JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\idea-workspace\\demo1\\src\\main\\java\\com\\example\\servlet\\AttributDic.json"));
+                JSONObject attributeName = GaussDBQuery.getAttributeName(new File(GaussDBQuery.jsonPath()));
                 out.println("<style> table, th, td { border:1px solid black;} </style>");
                 out.println("<table>");
                 out.println("<tr>");
@@ -175,6 +176,7 @@
                 out.println("<br>");
             } catch (IOException e) {
                 System.out.println("数据库字典未找到");
+                e.printStackTrace();
             }
         }
 

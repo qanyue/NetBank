@@ -10,11 +10,10 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
 
 public class DaoUtil {
-    static String resource = "mybatis-config.xml";
-    static InputStream inputStream;
+    public  static String resource = "mybatis-config.xml";
+    public  static InputStream inputStream;
 
     static {
         try {
@@ -24,7 +23,7 @@ public class DaoUtil {
         }
     }
 
-    static SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+    public static SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
     public static SqlSession getSqlSession() {
         return sqlSessionFactory.openSession();
@@ -96,15 +95,14 @@ public class DaoUtil {
         SqlSession sqlSession = DaoUtil.getSqlSession();
         try {
             UserServices services = sqlSession.getMapper(UserServices.class);
-            int modify = services.changeUserPassword(userLogin);
+            int modify=services.Password(userLogin);
             //事务提交
             sqlSession.commit();
-            if(modify >=1){
+            if(modify >= 1){
                 System.out.println(userLogin.getId()+"修改密码成功"+modify);
                 return true;
             }
-
-            return false;
+                return false;
         } catch (Exception exception) {
             sqlSession.rollback();
             exception.printStackTrace();
@@ -301,10 +299,7 @@ public class DaoUtil {
 
 
     public static void  main(String[] args){
-        UserLogin userLogin = new UserLogin();
-        userLogin.setId("01");
-        userLogin.setPassword("12345678");
-        DaoUtil.modifyUserPassword(userLogin);
+        UserLogin userLogin = new UserLogin("11","123456");
     }
 }
 

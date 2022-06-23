@@ -11,43 +11,43 @@
         <id property="id" column="c_id" />
         <result property="password" column="c_password"/>
     </resultMap>
-    <select id="login" parameterType="com.example.model.UserLogin" resultMap="userResultMap">
-        select * from finance.adminsys where s_id=#{id} and s_password=#{password}
-    </select>
+<!--    <select id="login" parameterType="com.example.model.UserLogin" resultMap="userResultMap">-->
+<!--        select * from finance.adminsys where s_id=#{id} and s_password=#{password}-->
+<!--    </select>-->
     <!--查询个人所有保险-->
-    <select id="InsuranceQuery" parameterType="String" resultType="com.example.model.Client_Insurance">
-        select *
-        from finance.client_insurance where c_id=#{id};
-    </select>
+<!--    <select id="InsuranceQuery" parameterType="String" resultType="com.example.model.Client_Insurance">-->
+<!--        select *-->
+<!--        from finance.client_insurance where c_id=#{id};-->
+<!--    </select>-->
     <!--查询个人特定保险-->
-    <select id="InsuranceQueryOne" resultType="com.example.model.Client_Insurance">
-        select * from finance.client_insurance where c_id=#{c_id,jdbcType=VARCHAR} and i_id = #{i_id,jdbcType=VARCHAR}
-    </select>
+<!--    <select id="InsuranceQueryOne" resultType="com.example.model.Client_Insurance">-->
+<!--        select * from finance.client_insurance where c_id=#{c_id,jdbcType=VARCHAR} and i_id = #{i_id,jdbcType=VARCHAR}-->
+<!--    </select>-->
     <!--删除个人特定保险-->
-    <delete id="DeleteInsurance" >
-        DELETE  FROM  finance.client_insurance where c_id=#{c_id,jdbcType=VARCHAR} and i_id = #{i_id,jdbcType=VARCHAR}
-    </delete>
+<!--    <delete id="DeleteInsurance" >-->
+<!--        DELETE  FROM  finance.client_insurance where c_id=#{c_id,jdbcType=VARCHAR} and i_id = #{i_id,jdbcType=VARCHAR}-->
+<!--    </delete>-->
 
-    <!--查询个人所用理财产品-->
-    <select id="ProductQuery" parameterType="String" resultType="com.example.model.Client_Products">
-        select *
-        from finance.client_products where c_id=#{id};
-    </select>
-    <!--查询个人特定理财产品-->
-    <select id="ProductQueryOne" resultType="com.example.model.Client_Insurance">
-        select * from finance.client_products where c_id=#{c_id,jdbcType=VARCHAR} and p_id= #{p_id,jdbcType=VARCHAR}
-    </select>
+<!--    &lt;!&ndash;查询个人所用理财产品&ndash;&gt;-->
+<!--    <select id="ProductQuery" parameterType="String" resultType="com.example.model.Client_Products">-->
+<!--        select *-->
+<!--        from finance.client_products where c_id=#{id};-->
+<!--    </select>-->
+<!--    &lt;!&ndash;查询个人特定理财产品&ndash;&gt;-->
+<!--    <select id="ProductQueryOne" resultType="com.example.model.Client_Products">-->
+<!--        select * from finance.client_products where c_id=#{c_id,jdbcType=VARCHAR} and p_id= #{p_id,jdbcType=VARCHAR}-->
+<!--    </select>-->
 
-    <!--删除个人理财产品-->
-    <delete id="DeleteProducts" >
-        DELETE  FROM  finance.client_products where c_id=#{c_id,jdbcType=VARCHAR} and p_id = #{c_id,jdbcType=VARCHAR}
-    </delete>
+<!--    &lt;!&ndash;删除个人理财产品&ndash;&gt;-->
+<!--    <delete id="DeleteProducts" >-->
+<!--        DELETE  FROM  finance.client_products where c_id=#{c_id,jdbcType=VARCHAR} and p_id = #{c_id,jdbcType=VARCHAR}-->
+<!--    </delete>-->
 
     <!--开卡-->
-    <insert id="openCard" parameterType="com.example.model.Card" >
-        INSERT INTO finance.card(ca_id,c_id,ca_password,ca_type,ca_deposit,ca_status)
-        VALUES (#{ca_id},#{c_id},#{capassword},#{ca_type},#{ca_deposit},#{ca_status})
-    </insert>
+<!--    <insert id="openCard" parameterType="com.example.model.Card" >-->
+<!--        INSERT INTO finance.card(ca_id,c_id,ca_password,ca_type,ca_deposit,ca_status)-->
+<!--        VALUES (#{ca_id},#{c_id},#{capassword},#{ca_type},#{ca_deposit},#{ca_status})-->
+<!--    </insert>-->
 
     <!--修改用户密码-->
     <update id="changeUserPassword" parameterType="com.example.model.UserInfo">
@@ -55,44 +55,50 @@
     </update>
 
     <!--删除某个基金-->
-    <delete id="s_deleteFund">
-        DELETE from finance.fund where f_id = #{f_id}
-    </delete>
+<!--    <delete id="s_deleteFund">-->
+<!--        DELETE from finance.fund where f_id = #{f_id}-->
+<!--    </delete>-->
     <!--查询某个基金-->
-    <select id="s_queryFund" resultType="com.example.model.Fund">
-        select * from finance.fund where  f_id = #{f_id}
-    </select>
+<!--    <select id="s_queryFund" resultType="com.example.model.Fund">-->
+<!--        select * from finance.fund where  f_id = #{f_id}-->
+<!--    </select>-->
 
     <!--建立一个新的基金-->
-    <insert id="s_insertFund" parameterType="com.example.model.Fund">
-        insert into finance.fund values (#{f_id},#{f_name},#{f_type},#{f_start},#{f_end},#{f_risk},#{f_manager},#{f_remain},#{f_status})
-    </insert>
+<!--    <insert id="s_insertFund" parameterType="com.example.model.Fund">-->
+<!--        insert into finance.fund values (#{f_id},#{f_name},#{f_type},#{f_start},#{f_end},#{f_risk},#{f_manager},#{f_remain},#{f_status})-->
+<!--    </insert>-->
 
     <!--查询某个理财产品-->
-    <select id="s_queryProduct" resultType="com.example.model.Product">
-        select * from finance.products where  p_id = #{p_id}
-    </select>
+<!--    <select id="s_queryProduct" resultType="com.example.model.Product">-->
+<!--        select * from finance.products where  p_id = #{p_id}-->
+<!--    </select>-->
     <!--删除某个理财产品-->
-    <delete id="s_deleteProduct">
-        DELETE  from finance.fund where f_id=#{f_id}
-    </delete>
+<!--    <delete id="s_deleteProduct">-->
+<!--        DELETE  from finance.fund where f_id=#{f_id}-->
+<!--    </delete>-->
     <!--添加一个新的理财产品-->
-    <insert id="s_insertProduct" parameterType="com.example.model.Product">
-        INSERT INTO finance.products(p_id,p_name,p_start,p_end,p_remain,p_describe,p_status) VALUES
-            (#{p_id},#{p_name},#{p_start},#{p_end},#{p_remain},#{p_describe},#{p_status})
-    </insert>
+<!--    <insert id="s_insertProduct" parameterType="com.example.model.Product">-->
+<!--        INSERT INTO finance.products(p_id,p_name,p_start,p_end,p_remain,p_describe,p_status) VALUES-->
+<!--            (#{p_id},#{p_name},#{p_start},#{p_end},#{p_remain},#{p_describe},#{p_status})-->
+<!--    </insert>-->
 
     <!--查询某个保险-->
-    <select id="s_queryFund" resultType="com.example.model.Insurance">
-        select * from finance.insurance where  i_id = #{i_id}
-    </select>
+<!--    <select id="s_queryInsurance" resultType="com.example.model.Insurance">-->
+<!--        select * from finance.insurance where  i_id = #{i_id}-->
+<!--    </select>-->
     <!--删除某个保险-->
-    <delete id="s_deleteInsurance">
-        DELETE  from finance.insurance where i_id=#{i_id}
-    </delete>
+<!--    <delete id="s_deleteInsurance">-->
+<!--        DELETE  from finance.insurance where i_id=#{i_id}-->
+<!--    </delete>-->
     <!--添加一个新的保险-->
-    <insert id="s_insertInsurance" parameterType="com.example.model.Insurance">
-        INSERT INTO finance.insurance (i_id,i_name,i_project,i_start,i_end,i_applicable,i_status)  VALUES
-            (#{i_id},#{i_name},#{i_project},#{i_start},#{i_end},#{i_applicable},#{i_status})
-    </insert>
+<!--    <insert id="s_insertInsurance" parameterType="com.example.model.Insurance">-->
+<!--        INSERT INTO finance.insurance (i_id,i_name,i_project,i_start,i_end,i_applicable,i_status)  VALUES-->
+<!--            (#{i_id},#{i_name},#{i_project},#{i_start},#{i_end},#{i_applicable},#{i_status})-->
+<!--    </insert>-->
+<!--    <insert id="regist_user">-->
+<!--        insert into finance.users values (#{id},#{password})-->
+<!--    </insert>-->
+<!--    <insert id="regist_client">-->
+<!--        insert into finance.client values(#{c_id},#{c_name},#{c_mail},#{c_id_card},#{c_phone},#{c_status})-->
+<!--    </insert>-->
 </mapper>

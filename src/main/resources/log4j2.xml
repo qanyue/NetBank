@@ -26,7 +26,6 @@
             <!-- 指定最多保存的文件个数 -->
             <DefaultRolloverStrategy max="20"/>
         </RollingRandomAccessFile>
-        <param name="Encoding" value="UTF-8" />
     </Appenders>
 
     <Loggers>
@@ -49,7 +48,6 @@
         <!-- 将druid连接池的sql语句打印到日志文件中 -->
         <logger name="development.sql.Statement" level="debug" additivity="false">
             <appender-ref ref="Console"/>
-            <appender-ref ref="RollingFileName"/>
         </logger>
         <root level="info" includeLocation="true">
             <appender-ref ref="ErrorLog"/>

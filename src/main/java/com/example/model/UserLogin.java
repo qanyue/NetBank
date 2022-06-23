@@ -19,5 +19,11 @@ public class UserLogin {
     }
 
     private String id;
+
+    public UserLogin(String id, String password) {
+        this.id = id;
+        this.password = password;
+    }
+
     private String password;
 }

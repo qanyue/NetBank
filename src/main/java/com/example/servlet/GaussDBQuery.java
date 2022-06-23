@@ -3,7 +3,6 @@ package com.example.servlet;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.io.FileUtils;
 
-import javax.faces.application.Resource;
 import javax.servlet.jsp.JspWriter;
 import java.io.*;
 import java.sql.*;
@@ -74,6 +73,7 @@ public class GaussDBQuery {
         out.println("</table>");
         out.println("<br>");
         } catch (IOException e) {
+            e.printStackTrace();
             System.out.println("数据库字典未找到");
         }
     }
@@ -106,6 +106,7 @@ public class GaussDBQuery {
             out.println("</table>");
             out.println("<br>");
         } catch (IOException e) {
+            e.printStackTrace();
             System.out.println("数据库字典未找到");
         }
     }

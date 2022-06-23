@@ -11,9 +11,14 @@
         <id property="id" column="c_id" />
         <result property="password" column="c_password"/>
     </resultMap>
-    <select id="login" parameterType="com.example.model.UserLogin" resultMap="userResultMap">
-        select * from finance.users where c_id=#{id} and c_password=#{password}
-    </select>
+    <!--修改密码-->
+<!--    <update id="Password" useGeneratedKeys="true" parameterType="com.example.model.UserLogin">-->
+<!--        update finance.users set c_password = #{password} where c_id = #{id}-->
+<!--    </update>-->
+
+<!--    <select id="login" parameterType="com.example.model.UserLogin" resultMap="userResultMap">-->
+<!--        select * from finance.users where c_id=#{id} and c_password=#{password}-->
+<!--    </select>-->
     <!--查询个人所有保险-->
     <select id="InsuranceQuery" parameterType="String" resultType="com.example.model.Client_Insurance">
         select *
@@ -58,10 +63,6 @@
         VALUES (#{ca_id},#{c_id},#{capassword},#{ca_type},#{ca_deposit},#{ca_status})
     </insert>
 
-    <!--修改用户密码-->
-    <update id="changeUserPassword" parameterType="com.example.model.UserInfo">
-        UPDATE finance.users set c_password = #{password} where c_id=#{id}
-    </update>
 
 
 

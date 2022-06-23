@@ -3,13 +3,19 @@ package com.example.servlet;
 import com.example.DAOUtils.DaoUtil;
 import com.example.model.UserLogin;
 
+import com.example.service.UserServices;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 
 @WebServlet(name = "passwordchange", value = "/passwordchange")
@@ -19,19 +25,12 @@ public class passwordchange extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
-        String password = request.getParameter("password");
-        String confirm = request.getParameter("confirm");
-        HttpSession session = request.getSession();
-        String username = (String) session.getAttribute("c_id");
-        if(!confirm.equals(password)){
-            out.println("<h1>两次密码不一致，请重试");
-        }
-        UserLogin user = new UserLogin();
-        user.setId(username);
-        user.setPassword(password);
-        DaoUtil.modifyUserPassword(user);
-            out.println("<h1>修改密码成功");
-            response.sendRedirect("Login.jsp");
+//        String password = request.getParameter("newpwd").strip();
+        UserLogin user = new UserLogin("01","123456");
+        if(DaoUtil.modifyUserPassword(user)){
+          out.println("<h1>修改密码成功");
+          response.sendRedirect("Login.jsp");
+      }
 
     }
 
