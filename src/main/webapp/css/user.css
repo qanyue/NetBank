@@ -101,47 +101,44 @@ body {
 .Button1 {
     box-shadow: 0 30px 60px 0 rgba(0,0,0,.3);
     background-color: white;
-    padding: 90px;
     border: 1px #f4f4f4 solid;
     grid-area: Bttn1;
     border-radius: 10px;
-
+    vertical-align:middle;
 }
 .Button2 {
     box-shadow: 0 30px 60px 0 rgba(0,0,0,.3);
     background-color: white;
-    padding: 90px;
     border: 1px #f4f4f4 solid;
     grid-area: Bttn2;
     border-radius: 10px;
-
+    vertical-align:middle;
 }
 .Button3 {
     box-shadow: 0 30px 60px 0 rgba(0,0,0,.3);
     background-color: white;
-    padding: 90px;
     border: 1px #f4f4f4 solid;
     grid-area: Bttn3;
     border-radius: 10px;
+    vertical-align:middle;
 
 }
 .Button4 {
     box-shadow: 0 30px 60px 0 rgba(0,0,0,.3);
     background-color: white;
-    padding: 90px;
     border: 1px #f4f4f4 solid;
     grid-area: Bttn4;
     border-radius: 10px;
+    vertical-align:middle;
 
 }
 .Button5 {
     box-shadow: 0 30px 60px 0 rgba(0,0,0,.3);
     background-color: white;
-    padding: 90px;
     border: 1px #f4f4f4 solid;
     grid-area: Bttn5;
     border-radius: 10px;
-
+    vertical-align:middle;
 }
 
 button {
@@ -161,4 +158,8 @@ button:active{
     background-attachment: fixed;
     grid-area: foot;
     height: 50px;
+}
+
+p {
+  text-align: center;
 }

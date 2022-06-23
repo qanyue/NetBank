@@ -28,7 +28,7 @@
     <h1>欢迎您购买基金</h1>
 </div>
 <div class="Sidebar">
-    <a href="User.jsp"><button>主页</button></a>
+    <a href="User.jsp"><img src="images/Home.png"></a>
 </div>
 <br>
 <div class="form">

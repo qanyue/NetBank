@@ -83,11 +83,14 @@ body {
 }
 
 .Sidebar {
-    background-color: #f4f4f4;
+    width: 100%;
+    height: 100px;
     grid-area: sidebar;
-    border: 1px #555555 solid;
 }
 
+.Sidebar img{
+    object-fit:cover;
+}
 
 
 input[type=submit] {

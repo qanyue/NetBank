@@ -205,24 +205,34 @@
                <br> 请选择您要进行的业务<br><br>
             </div>
 
-            <div class="Button1">
-                <a href="Deposit.jsp"><button>存款</button></a>
+            <div class="Button1" style="text-align:center">
+<%--                <a href="Deposit.jsp"><button>存款</button></a>--%>
+                    <a href="Deposit.jsp"><img src="images/Deposit.png"></a>
+                    <p>存款</p>
 
             </div>
 
-            <div class="Button2">
-                <a href="withdraw.jsp"><button>取款</button></a>
+            <div class="Button2" style="text-align:center">
+<%--                <a href="withdraw.jsp"><button>取款</button></a>--%>
+                    <a href="withdraw.jsp"><img src="images/Withdraw.png"></a>
+                    <p>取款</p>
             </div>
 
-            <div class="Button3">
-                <a href="BuyFund.jsp"><button>购买基金</button></a>
+            <div class="Button3" style="text-align:center">
+<%--                <a href="BuyFund.jsp"><button>购买基金</button></a>--%>
+                <a href="BuyFund.jsp"><img src="images/Fund.png"></a>
+                <p>购买基金</p>
             </div>
 
-            <div class="Button4">
-                <a href="BuyProduct.jsp"><button>购买理财产品</button></a>
+            <div class="Button4" style="text-align:center">
+<%--                <a href="BuyProduct.jsp"><button>购买理财产品</button></a>--%>
+                    <a href="BuyProduct.jsp"><img src="images/Product.png"></a>
+                    <p>购买理财产品</p>
             </div>
-            <div class="Button5">
-                <a href="BuyInsurance.jsp"><button>购买保险</button></a>
+            <div class="Button5" style="text-align:center">
+<%--                <a href="BuyInsurance.jsp"><button>购买保险</button></a>--%>
+                    <a href="BuyInsurance.jsp"><img src="images/Insurance.png"></a>
+                    <p>购买保险</p>
             </div>
 
 

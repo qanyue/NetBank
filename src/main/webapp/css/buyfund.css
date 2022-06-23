@@ -53,10 +53,13 @@ body {
 }
 
 .Sidebar {
+    width: 100%;
     height: 100px;
-    background-color: #f4f4f4;
     grid-area: sidebar;
-    border: 1px #555555 solid;
+}
+
+.Sidebar img{
+    object-fit:cover;
 }
 
 .table {
