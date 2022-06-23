@@ -24,6 +24,7 @@ public class cardupdate extends HttpServlet {
         out.println("<link rel=\"stylesheet\" href=\"css/index.css\">");
         Statement stmt = null;
         ResultSet rs = null;
+        out.println("<link rel=\"stylesheet\" href=\"css/temp.css\">");
         String id =request.getParameter("id");
         String caid =request.getParameter("caid");
         String password =request.getParameter("password");

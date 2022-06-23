@@ -42,7 +42,7 @@ public class GaussDBQuery {
         ArrayList<String> cols_name = new ArrayList<>(rows.get(0).keySet());
         try {
         JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\AttributDic.json"));
-        out.println("<style> table, th, td { border:1px solid black;} </style>");
+        out.println("<style> table, th, td { border:1px solid #b4aaaa;} </style>");
         out.println("<table>");
         out.println("<tr>");
         for(String col:cols_name){

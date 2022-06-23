@@ -23,6 +23,7 @@ public class cardsearch extends HttpServlet {
         PrintWriter out = response.getWriter();
         Statement stmt = null;
         ResultSet rs = null;
+        out.println("<link rel=\"stylesheet\" href=\"css/temp.css\">");
         String id =request.getParameter("id");
         String caid =request.getParameter("caid");
         String password =request.getParameter("password");

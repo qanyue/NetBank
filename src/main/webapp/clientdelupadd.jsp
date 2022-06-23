@@ -15,7 +15,7 @@
 <head>
 
     <title>管理员对用户数据的增删改</title>
-    <link rel="stylesheet" href="./css/client_manager.css">
+    <link rel="stylesheet" href="./css/manager.css">
 
 </head>
 <body>
@@ -58,9 +58,9 @@
                 <input type="text" class="tom" name="card" ><br><br>
                 客户手机号：<br>
                 <input type="text" class="tom" name="phone" ><br><br>
-                <input type="submit" class="tom" name="search" value="搜索" onclick="form1.action='clientsearch';form1.submit();"></form>
-            <input type="submit" class="tom" name="delete" value="删除" onclick="form1.action='clientdelete';form1.submit();"></form>
-            <input type="submit" class="tom" name="add" value="增加" onclick="form1.action='clientupdate';form1.submit();"></form>
+                <input type="submit" class="tom" name="search" value="搜索" onclick="form1.action='clientsearch';form1.submit();"><br>
+            <input type="submit" class="tom" name="delete" value="删除" onclick="form1.action='clientdelete';form1.submit();">
+            <input type="submit" class="tom" name="add" value="增加" onclick="form1.action='clientupdate';form1.submit();">
             <input type="submit" class="tom" name="update" value="更新" onclick="form1.action='clientupdate';form1.submit();">
             </form>
 
