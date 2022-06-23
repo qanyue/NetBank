@@ -36,6 +36,9 @@ public class Login extends HttpServlet {
                     return;
                 }
                 System.out.println(2);
+                HttpSession session = request.getSession();
+                session.setAttribute("s_id",username);
+                //Todo 修改
                 response.sendRedirect("index.jsp");
             }else if("user".equals(type)){
                 rs = stmt.executeQuery(userSql);

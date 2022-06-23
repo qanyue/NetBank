@@ -9,6 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -25,11 +27,14 @@ public class passwordchange extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
-//        String password = request.getParameter("newpwd").strip();
-        UserLogin user = new UserLogin("01","123456");
+        out.println("<meta http-equiv=\"refresh\" content=\"2;URL=Login.jsp\">");
+        HttpSession session = request.getSession();
+        String username = session.getAttribute("c_id").toString();
+        String password = request.getParameter("newpwd").strip();
+        UserLogin user = new UserLogin(username,password);
         if(DaoUtil.modifyUserPassword(user)){
           out.println("<h1>修改密码成功");
-          response.sendRedirect("Login.jsp");
+//          response.sendRedirect("Login.jsp");
       }
 
     }

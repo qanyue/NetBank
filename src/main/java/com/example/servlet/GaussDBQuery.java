@@ -5,6 +5,9 @@ import org.apache.commons.io.FileUtils;
 
 import javax.servlet.jsp.JspWriter;
 import java.io.*;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.sql.*;
 import java.util.*;
 
@@ -12,7 +15,7 @@ public class GaussDBQuery {
 
     private static final String JDBC_DRIVER = "org.opengauss.Driver";
     private static final String DB_URL = "jdbc:opengauss://luoxq.top:5432/finance?ApplicationName=app1";
-    private  static String jsonFile = "AttributDic.json";
+    private  static final String jsonFile = "AttributDic.json";
     // 数据库的用户名与密码，需要根据自己的设置
     private static final String USER = "gaussdb";
     private static final String PASS = "Hohai@123";
@@ -23,6 +26,7 @@ public class GaussDBQuery {
         if (path.contains(":")) {
             path = path.replace("file:/", "");
         }
+        System.out.println(path);
         return path;
     }
     public static ArrayList<LinkedHashMap<String,Object>> getSelectRestult(ResultSet rs) throws SQLException {
@@ -51,7 +55,7 @@ public class GaussDBQuery {
         ArrayList<String> cols_name = new ArrayList<>(rows.get(0).keySet());
 
         try {
-        JSONObject attributeName = GaussDBQuery.getAttributeName(new File(GaussDBQuery.jsonFile));
+        JSONObject attributeName = GaussDBQuery.getAttributeName(new File(GaussDBQuery.jsonPath()));
 
         out.println("<style> table, th, td { border:1px solid black;} </style>");
         out.println("<table>");
@@ -127,6 +131,51 @@ public class GaussDBQuery {
         JSONObject obj =  JSONObject.parseObject(dict);
          return  JSONObject.parseObject(dict);
     }
+    public static LinkedHashMap<String, Object> beanToMap(Object object) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Field[] fields = object.getClass().getDeclaredFields();
+        LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+
+        for (Field field:fields) {
+            field.setAccessible(true);
+            String key = field.getName();
+            String method = key.substring(0,1).toUpperCase()+key.substring(1);
+            Method m = object.getClass().getDeclaredMethod("get"+method);
+            Object value = m.invoke(object);
+            map.put(key,value);
+        }
+        return map;
+    }
+    public static  void PrintChangeTable(LinkedHashMap<String,Object> field,PrintWriter out,String id){
+        ArrayList<String> cols = new ArrayList<>(field.keySet());
+
+        try {
+
+            JSONObject attributeName = GaussDBQuery.getAttributeName(new File(GaussDBQuery.jsonPath()));
+
+            out.println("<style> table, th, td { border:1px solid black;} </style>");
+            out.println("<table>");
+            out.println("<tr>");
+            out.println("<th> 属性名 </th>");
+            out.println("<th> 原值 </th>");
+            out.println("<th> 新值 </th>");
+            out.println("</tr>");
+            for(String col:cols){
+                String col_name = attributeName.getString(col);
+                out.println("<tr>");
+                out.println("<th>"+col_name+ "</th>");
+                out.println("<th>"+field.get(col)+"</th>");
+                out.println("<th> <input type=\"text\" name=\""+col+"\"> </th>");
+                out.println("</tr>");
+            }
+
+            out.println("</table>");
+            out.println("<br>");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("数据库字典未找到");
+        }
+    }
+
     public static void main(String[] args) {
         Connection conn = null;
         Statement stmt = null;
