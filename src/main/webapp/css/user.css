@@ -1,0 +1,176 @@
+body {
+    background-color: white;
+    /*background-image: url(../images/backgd.jpg);*/
+    /*background-size: 100% 100%;*/
+    /*background-attachment: fixed;*/
+}
+.container {
+    margin: auto;
+}
+.box1 {
+
+    position: absolute;
+    width: 99%;
+    height: 100%;
+
+
+
+    /*block-size: 1100px;*/
+    color: #555555;
+    display: grid;
+    grid-template-areas:
+        "head1 head1 head1 head1 head1"
+        "head2 head2 head2 head2 head2"
+        "gap gap gap gap gap"
+        "Form Form Form Form Form"
+        "Form Form Form Form Form"
+        "Form Form Form Form Form"
+        "Form Form Form Form Form"
+        "non non non non non"
+        "head head head head head"
+        "Bttn1 Bttn2 Bttn3 Bttn4 Bttn5"
+        "foot foot foot foot foot";
+
+}
+
+.head1 {
+    background-image: url(../images/backgd.jpg);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-color: #66afe9;
+    grid-area: head1;
+    height: 200px;
+    text-align: center;
+}
+.head2 {
+    /*box-shadow: 0 30px 60px 0 rgba(0,0,0,.3);*/
+    border: 1px solid #555555;
+
+    background-color: white;
+
+    font-family: "Times New Roman", Times, Serif;
+    text-align: center;
+    font-size: 10px;
+
+
+    font-weight: 400;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 1em;
+    word-spacing: 2em;
+
+    grid-area: head2;
+}
+
+.form {
+    background-color: white;
+    /*box-shadow: 0 30px 60px 0 rgba(0,0,0,.3);*/
+    border: #555555 1px solid;
+    padding-left: 450px;
+    grid-area: Form;
+    text-align: left;
+
+}
+
+.gap1{
+    /*box-shadow: 0 30px 60px 0 rgba(0,0,0,.3);*/
+    /*background-image: url(../images/backgd.jpg);*/
+    /*background-size: 100% 100%;*/
+    /*background-attachment: fixed;*/
+    height: 20px;
+    grid-area: gap;
+}
+
+.gap2 {
+    /*background-image: url(../images/backgd.jpg);*/
+    /*background-size: 100% 100%;*/
+    /*background-attachment: fixed;*/
+    height: 20px;
+    grid-area: non;
+}
+
+.head {
+    letter-spacing: 1em;
+    border-top: 1px solid #555555;
+    text-align: center;
+    grid-area: head;
+    background-color: white;
+
+}
+
+.Button1 {
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,.3);
+    background-color: white;
+    border: 1px #f4f4f4 solid;
+    grid-area: Bttn1;
+    border-radius: 10px;
+    vertical-align:middle;
+}
+.Button2 {
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,.3);
+    background-color: white;
+    border: 1px #f4f4f4 solid;
+    grid-area: Bttn2;
+    border-radius: 10px;
+    vertical-align:middle;
+}
+.Button3 {
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,.3);
+    background-color: white;
+    border: 1px #f4f4f4 solid;
+    grid-area: Bttn3;
+    border-radius: 10px;
+    vertical-align:middle;
+
+}
+.Button4 {
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,.3);
+    background-color: white;
+    border: 1px #f4f4f4 solid;
+    grid-area: Bttn4;
+    border-radius: 10px;
+    vertical-align:middle;
+
+}
+.Button5 {
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,.3);
+    background-color: white;
+    border: 1px #f4f4f4 solid;
+    grid-area: Bttn5;
+    border-radius: 10px;
+    vertical-align:middle;
+}
+
+a:hover img{
+    filter:alpha(Opacity=80);
+    -moz-opacity:0.8;
+    opacity: 0.8;}
+
+/*button {*/
+/*    background-color: #555555;*/
+/*    color: #f4f4f4;*/
+/*}*/
+/*button:hover {*/
+/*    background-color: grey;*/
+/*}*/
+/*button:active{*/
+/*    background-color: darkgrey;*/
+/*}*/
+
+.footer {
+    background-image: url(../images/backgd.jpg);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    grid-area: foot;
+    height: 50px;
+}
+
+p {
+  text-align: center;
+}
+
+
+
+a {
+    color: #555555;
+}

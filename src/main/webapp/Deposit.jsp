@@ -9,13 +9,37 @@
 <html>
 <head>
     <title>存款</title>
+    <link rel="stylesheet" href="css/deposit.css">
 </head>
 <body>
-<form  action="Deposit" method="post">
-    <label>请输入需要存款的银行卡号:<input type="number" name="card_num" minlength="7"  size="50"></label><br>
-    <label>请输入存款金额:<input type="number" name="depositNum" size="50"></label><br>
-    <label>请输入银行卡密码:<input type="password" name="password"></label>
-    <input type="submit" value="存款">
-</form>
+
+<div class="cotainer">
+
+    <div class="box1">
+
+        <div class="head1"><br><br><br></div>
+
+        <div class="head2">
+            <p>欢迎您存款</p>
+        </div>
+
+        <div class="Sidebar">
+            <a href="User.jsp"><img src="images/Home.png"></a>
+        </div>
+
+        <div class="form">
+            <form  action="Deposit" method="post">
+
+                <label>银行卡号:</br><input type="number" name="card_num" minlength="7"  size="50"></label><br><br>
+                <label>存款金额:</br><input type="number" name="depositNum" size="50"></label><br><br>
+                <label>银行卡密码:</br><input type="password" name="password"></label><br><br>
+
+                <input type="submit" value="存款" >
+
+            </form>
+
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -6,7 +6,6 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -21,7 +20,7 @@ public class Deposit extends HttpServlet {
         String cardNum = request.getParameter("card_num");
         String depositNum = request.getParameter("depositNum");
         String password = request.getParameter("password");
-        String sql = "UPDATE finance.card set ca_deposit=card.ca_deposit+"+depositNum+" where card.ca_id="+cardNum;
+        String sql = "UPDATE finance.card set card.ca_deposit=card.ca_deposit+"+depositNum+" where card.ca_id="+cardNum;
         String checksql = "select * from finance.card where card.ca_id = '" + cardNum + "' and card.ca_password = '" + password + "';";
         try(Connection conn = GaussDBQuery.getConnetion()) {
             Statement stmt = conn.createStatement();
@@ -35,6 +34,7 @@ public class Deposit extends HttpServlet {
            } else  {
                out.println("<h1>存款失败");
            }
+
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();

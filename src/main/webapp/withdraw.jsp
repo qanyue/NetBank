@@ -9,13 +9,37 @@
 <html>
 <head>
   <title>取款</title>
+  <link rel="stylesheet" href="css/withdraw.css">
 </head>
-<body>
-<form  action="Withdraw" method="post">
-  <label>请输入需要取款的银行卡号:<input type="number" name="card_num" minlength="7"  size="50"></label><br>
-  <label>请输入取款金额:<input type="number" name="withdrawNum" size="50"></label><br>
-  <label>请输入银行卡密码:<input type="password" name="password"></label>
-  <input type="submit" value="取款">
-</form>
+<body><div class="cotainer">
+
+  <div class="box1">
+
+    <div class="head1"><br><br><br></div>
+
+    <div class="head2">
+      <p>欢迎您存款</p>
+    </div>
+
+    <div class="Sidebar">
+      <a href="User.jsp"><img src="images/Home.png"></a>
+    </div>
+
+    <div class="form">
+
+      <form  action="Withdraw" method="post">
+        <label>银行卡号:<br><input type="number" name="card_num" minlength="7"  size="50"></label><br>
+        <label>取款金额:<br><input type="number" name="withdrawNum" size="50"></label><br>
+        <label>银行卡密码:<br><input type="password" name="password"></label><br>
+        <br>
+        <input type="submit" value="取款">
+      </form>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
 </body>
 </html>

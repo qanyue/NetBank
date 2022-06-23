@@ -14,54 +14,73 @@
 <html>
 <head>
     <title>购买基金</title>
+    <link rel="stylesheet" href="css/buyfund.css">
 </head>
 <body>
-<h1> 请购买数量不要超过基金余量</h1>
+<div class="box1">
+
+
+<div class="head1">
+
+</div>
+
+<div class="head2">
+    <h1>欢迎您购买基金</h1>
+</div>
+<div class="Sidebar">
+    <a href="User.jsp"><img src="images/Home.png"></a>
+</div>
 <br>
-<form action="BuyFundServlet" method="post">
-    <%
-        Statement stmt = null;
-        ResultSet rs = null;
-        try (Connection conn = GaussDBQuery.getConnetion()) {
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-            rs = stmt.executeQuery("select * from finance.fund;");
-            GaussDBQuery.printQueryRadio(rs, out, "f_id");
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            if (rs != null) {
-                System.out.println("关闭Rusultset....");
-                try {
-                    rs.close();
-                } catch (SQLException e) {
+<div class="form">
+    <h1> 请购买数量不要超过基金余量</h1>
+    <form action="BuyFundServlet" method="post">
+        <div class="table">
+            <%
+
+
+                Statement stmt = null;
+                ResultSet rs = null;
+                try (Connection conn = GaussDBQuery.getConnetion()) {
+                    stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+                    rs = stmt.executeQuery("select * from finance.fund;");
+                    GaussDBQuery.printQueryRadio(rs, out, "f_id","f_status");
+                } catch (SQLException | ClassNotFoundException e) {
                     e.printStackTrace();
+                } finally {
+                    if (rs != null) {
+                        System.out.println("关闭Rusultset....");
+                        try {
+                            rs.close();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (stmt != null) {
+                        System.out.println("关闭Statement....");
+                        try {
+                            stmt.close();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
-            }
-            if (stmt != null) {
-                System.out.println("关闭Statement....");
-                try {
-                    stmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
 
+            %>
+        </div>
 
-        }
+        <div style="text-align: center;">
+            <label>
+                购买金额
+                <input type="number" name="fundBuyNum" step="0.01" size="30">
+            </label><br><br>
+            <input type="submit" value="购买 ">
+        </div>
+    </form>
+</div>
+    <div class="footer">
 
-    %>
-    <div style="text-align: center;">
-        <label>
-            购买数量
-            <input type="number" name="fundBuyNum" step="0.01" size="30">
-        </label><br>
-        <label>
-            请输入您的身份证号
-            <input type="text" name="idCard"  maxlength="18" size="30">
-        </label>
-        <input type="submit" value="购买 ">
     </div>
-</form>
+</div>
 
 </body>
 </html>

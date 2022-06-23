@@ -19,6 +19,7 @@
 <html>
 <head>
     <title>用户信息</title>
+    <link rel="stylesheet" href="css/user.css">
 </head>
     <%
         Statement stmt = null;
@@ -44,155 +45,207 @@
             }
         %>
 <body>
-<h1> 欢迎您，<%=name %>！</h1>
-<br>
-    <div >
-        您持有的银行卡信息如下：
-        <br>
-        <br>
-        <%
-            try {
-                cardRs = stmt.executeQuery(cardSql);
-                ArrayList<LinkedHashMap<String, Object>> cardrows = GaussDBQuery.getSelectRestult(cardRs);
-                ArrayList<String> cardcols_name = new ArrayList<>(cardrows.get(0).keySet());
-                JSONObject attributeName = GaussDBQuery.getAttributeName(new File(GaussDBQuery.jsonPath()));
-                out.println("<style> table, th, td { border:1px solid black;} </style>");
-                out.println("<table>");
-                out.println("<tr>");
-                for(String col:cardcols_name){
-                    if("ca_password".equals(col)){
-                        continue;
+<div class="container">
+    <div class="box1">
+        <div class="head1">
+
+        </div>
+        <div class="head2">
+            <h1> 欢迎您，<%=name %>！</h1>    <br>
+            <a href="passwordchange.jsp">修改密码</a>
+        </div>
+        <div class="gap1">
+
+        </div>
+        <div class="form">
+            <div >
+                银行卡信息
+                <br>
+                <br>
+                <%
+                    cardRs = stmt.executeQuery(cardSql);
+                    if(cardRs.next()){
+                        ArrayList<LinkedHashMap<String, Object>> cardrows = GaussDBQuery.getSelectRestult(cardRs);
+                        ArrayList<String> cardcols_name = new ArrayList<>(cardrows.get(0).keySet());
+                        try {
+                            JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\AttributDic.json"));
+                            out.println("<style> table, th, td { border:1px solid black;} </style>");
+                            out.println("<table>");
+                            out.println("<tr>");
+                            for(String col:cardcols_name){
+                                if("ca_password".equals(col)){
+                                    continue;
+                                }
+                                col = attributeName.getString(col);
+//            System.out.println(col);
+                                out.print("<th>"+col+ "</th>");
+                            }
+                            out.println("</tr>");
+                            for(LinkedHashMap<String,Object> row: cardrows){
+                                row.remove("ca_password");
+                                out.println("<tr>");
+                                for(String filed:row.keySet()){
+                                    out.print("<th>"+row.get(filed)+"</th>");
+                                }
+                                out.println("</tr>");
+                            }
+                            out.println("</table>");
+                            out.println("<br>");
+                        } catch (IOException e) {
+                            System.out.println("数据库字典未找到");
+                        }
                     }
-                    col = attributeName.getString(col);
-                    out.print("<th>"+col+ "</th>");
-                }
-                out.println("</tr>");
-                for(LinkedHashMap<String,Object> row: cardrows){
-                    row.remove("ca_password");
-                    out.println("<tr>");
-                    for(String filed:row.keySet()){
-                        out.print("<th>"+row.get(filed)+"</th>");
+
+                %>
+            </div>
+            <br>
+            <div>
+                资产信息
+                <br>
+                <br>
+                <%
+                    productRs = stmt.executeQuery(productSql);
+                    if(productRs.next()){
+
+                        ArrayList<LinkedHashMap<String, Object>> prrows = GaussDBQuery.getSelectRestult(productRs);
+                        ArrayList<String> prcols_name = new ArrayList<>(prrows.get(0).keySet());
+                        try {
+                            JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\AttributDic.json"));
+                            out.println("<style> table, th, td { border:1px solid black;} </style>");
+                            out.println("<table>");
+                            out.println("<tr>");
+                            for(String col:prcols_name){
+                                col = attributeName.getString(col);
+//            System.out.println(col);
+                                out.print("<th>"+col+ "</th>");
+                            }
+                            out.println("</tr>");
+                            for(LinkedHashMap<String,Object> row: prrows){
+
+                                out.println("<tr>");
+                                for(String filed:row.keySet()){
+                                    out.print("<th>"+row.get(filed)+"</th>");
+                                }
+                                out.println("</tr>");
+                            }
+                            out.println("</table>");
+                            out.println("<br>");
+                        } catch (IOException e) {
+                            System.out.println("数据库字典未找到");
+                        }
                     }
-                    out.println("</tr>");
-                }
-                out.println("</table>");
-                out.println("<br>");
-            } catch (IOException e) {
-                System.out.println("数据库字典未找到1");
-                e.printStackTrace();
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        %>
+                    fundRs = stmt.executeQuery(fundSql);
+                    if(fundRs.next()){
+                        ArrayList<LinkedHashMap<String, Object>> furows = GaussDBQuery.getSelectRestult(fundRs);
+                        ArrayList<String> fucols_name = new ArrayList<>(furows.get(0).keySet());
+                        try {
+                            JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\AttributDic.json"));
+                            out.println("<style> table, th, td { border:1px solid black;} </style>");
+                            out.println("<table>");
+                            out.println("<tr>");
+                            for(String col:fucols_name){
+                                col = attributeName.getString(col);
+//            System.out.println(col);
+                                out.print("<th>"+col+ "</th>");
+                            }
+                            out.println("</tr>");
+                            for(LinkedHashMap<String,Object> row: furows){
+
+                                out.println("<tr>");
+                                for(String filed:row.keySet()){
+                                    out.print("<th>"+row.get(filed)+"</th>");
+                                }
+                                out.println("</tr>");
+                            }
+                            out.println("</table>");
+                            out.println("<br>");
+                        } catch (IOException e) {
+                            System.out.println("数据库字典未找到");
+                        }
+                    }
+                    insuranceRs = stmt.executeQuery(insuranceSql);
+                    if(insuranceRs.next()){
+                        ArrayList<LinkedHashMap<String, Object>> inrows = GaussDBQuery.getSelectRestult(insuranceRs);
+                        ArrayList<String> incols_name = new ArrayList<>(inrows.get(0).keySet());
+                        try {
+                            JSONObject attributeName = GaussDBQuery.getAttributeName(new File("D:\\AttributDic.json"));
+                            out.println("<style> table, th, td { border:1px solid black;} </style>");
+                            out.println("<table>");
+                            out.println("<tr>");
+                            for(String col:incols_name){
+                                col = attributeName.getString(col);
+//            System.out.println(col);
+                                out.print("<th>"+col+ "</th>");
+                            }
+                            out.println("</tr>");
+                            for(LinkedHashMap<String,Object> row: inrows){
+
+                                out.println("<tr>");
+                                for(String filed:row.keySet()){
+                                    out.print("<th>"+row.get(filed)+"</th>");
+                                }
+                                out.println("</tr>");
+                            }
+                            out.println("</table>");
+                            out.println("<br>");
+                        } catch (IOException e) {
+                            System.out.println("数据库字典未找到");
+                        }
+                    }
+
+                %>
+            </div>
+        </div>
+
+        <br>
+<%--        <div class="button">--%>
+            <div class="gap2">
+
+            </div>
+            <div class="head">
+               <br> 请选择您要进行的业务<br><br>
+            </div>
+
+            <div class="Button1" style="text-align:center">
+                <%--                <a href="Deposit.jsp"><button>存款</button></a>--%>
+                <a href="Deposit.jsp"><img src="images/Deposit.png"></a>
+                                    <p>存款</p>
+
+            </div>
+
+            <div class="Button2" style="text-align:center">
+<%--                <a href="withdraw.jsp"><button>取款</button></a>--%>
+                    <a href="withdraw.jsp"><img src="images/Withdraw.png"></a>
+                    <p>取款</p>
+            </div>
+
+            <div class="Button3" style="text-align:center">
+<%--                <a href="BuyFund.jsp"><button>购买基金</button></a>--%>
+                <a href="BuyFund.jsp"><img src="images/Fund.png"></a>
+                <p>购买基金</p>
+            </div>
+
+            <div class="Button4" style="text-align:center">
+<%--                <a href="BuyProduct.jsp"><button>购买理财产品</button></a>--%>
+                    <a href="BuyProduct.jsp"><img src="images/Product.png"></a>
+                    <p>购买理财产品</p>
+            </div>
+            <div class="Button5" style="text-align:center">
+<%--                <a href="BuyInsurance.jsp"><button>购买保险</button></a>--%>
+                    <a href="BuyInsurance.jsp"><img src="images/Insurance.png"></a>
+                    <p>购买保险</p>
+            </div>
+
+</div>
+
+
+<%--        </div>--%>
+        <div class="footer">
+
+        </div>
+
     </div>
-<br>
-<div>
-    您持有的资产信息如下：
-    <br>
-    <br>
-    <%
-        productRs = stmt.executeQuery(productSql);
-        if(productRs.next()){
-
-            ArrayList<LinkedHashMap<String, Object>> prrows = GaussDBQuery.getSelectRestult(productRs);
-            ArrayList<String> prcols_name = new ArrayList<>(prrows.get(0).keySet());
-//            try {
-                JSONObject attributeName = GaussDBQuery.getAttributeName(new File(GaussDBQuery.jsonPath()));
-                out.println("<style> table, th, td { border:1px solid black;} </style>");
-                out.println("<table>");
-                out.println("<tr>");
-                for(String col:prcols_name){
-                    col = attributeName.getString(col);
-//            System.out.println(col);
-                    out.print("<th>"+col+ "</th>");
-                }
-                out.println("</tr>");
-                for(LinkedHashMap<String,Object> row: prrows){
-
-                    out.println("<tr>");
-                    for(String filed:row.keySet()){
-                        out.print("<th>"+row.get(filed)+"</th>");
-                    }
-                    out.println("</tr>");
-                }
-                out.println("</table>");
-                out.println("<br>");
-
-        }
-        fundRs = stmt.executeQuery(fundSql);
-        if(fundRs.next()){
-            ArrayList<LinkedHashMap<String, Object>> furows = GaussDBQuery.getSelectRestult(fundRs);
-            ArrayList<String> fucols_name = new ArrayList<>(furows.get(0).keySet());
-            try {
-                JSONObject attributeName = GaussDBQuery.getAttributeName(new File(GaussDBQuery.jsonPath()));
-                out.println("<style> table, th, td { border:1px solid black;} </style>");
-                out.println("<table>");
-                out.println("<tr>");
-                for(String col:fucols_name){
-                    col = attributeName.getString(col);
-//            System.out.println(col);
-                    out.print("<th>"+col+ "</th>");
-                }
-                out.println("</tr>");
-                for(LinkedHashMap<String,Object> row: furows){
-
-                    out.println("<tr>");
-                    for(String filed:row.keySet()){
-                        out.print("<th>"+row.get(filed)+"</th>");
-                    }
-                    out.println("</tr>");
-                }
-                out.println("</table>");
-                out.println("<br>");
-            } catch (IOException e) {
-                e.printStackTrace();
-                System.out.println("数据库字典未找到");
-            }
-        }
-        insuranceRs = stmt.executeQuery(insuranceSql);
-        if(insuranceRs.next()){
-            ArrayList<LinkedHashMap<String, Object>> inrows = GaussDBQuery.getSelectRestult(insuranceRs);
-            ArrayList<String> incols_name = new ArrayList<>(inrows.get(0).keySet());
-            try {
-                JSONObject attributeName = GaussDBQuery.getAttributeName(new File(GaussDBQuery.jsonPath()));
-                out.println("<style> table, th, td { border:1px solid black;} </style>");
-                out.println("<table>");
-                out.println("<tr>");
-                for(String col:incols_name){
-                    col = attributeName.getString(col);
-//            System.out.println(col);
-                    out.print("<th>"+col+ "</th>");
-                }
-                out.println("</tr>");
-                for(LinkedHashMap<String,Object> row: inrows){
-
-                    out.println("<tr>");
-                    for(String filed:row.keySet()){
-                        out.print("<th>"+row.get(filed)+"</th>");
-                    }
-                    out.println("</tr>");
-                }
-                out.println("</table>");
-                out.println("<br>");
-            } catch (IOException e) {
-                System.out.println("数据库字典未找到");
-                e.printStackTrace();
-            }
-        }
-
-    %>
 </div>
-<br>
-<div>
-    请选择您要进行的业务：
-    <a href="passwordchange.jsp"><button>修改密码</button></a>
-    <a href="Deposit.jsp"><button>存款</button></a>
-    <a href="withdraw.jsp"><button>取款</button></a>
-    <a href="BuyFund.jsp"><button>购买基金</button></a>
-
-</div>
-
-
 
 </body>
 </html>

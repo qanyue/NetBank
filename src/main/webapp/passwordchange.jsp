@@ -8,6 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+
+
+    <link rel="stylesheet" href="css/passwordchange.css">
     <title>更改密码</title>
     <script type="text/javascript">
         function check() {
@@ -26,18 +29,33 @@
         }
     </script>
 </head>
-<body>
-<form  action="passwordchange" method="post" onsubmit="return check()">
 
-    <label>请输入新密码:<input type="password" name="newpwd" id="newpwd">
+<body>
+
+
+<div class="head">
+
+</div>
+<div class="change">
+    <br><br><br>
+    <form  action="passwordchange" method="post" onsubmit="return check()">
+
+        <div class="form">
+            <h1>改变密码</h1>
+            <br><br>
+            <label>请输入新密码:<input type="password" name="newpwd" id="newpwd">
         <span style="color:red;">*</span>
     </label><br>
 
     <label>请确认密码:<input type="password" id= "confirmpwd" name="confirmpwd" >
         <span style="color:red;">*</span>
         <span style="display: none;color: red" id="secondpwd">两次密码不一样！</span>
-    </label><br>
+    </label><br><br><br>
     <input type="submit" value="修改" >
+        </div>
+        <br>
 </form>
+</div>
+
 </body>
 </html>
