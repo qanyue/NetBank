@@ -56,6 +56,7 @@ body {
     width: 100%;
     height: 100px;
     grid-area: sidebar;
+    border: none;
 }
 
 .Sidebar img{
