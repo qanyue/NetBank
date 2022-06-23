@@ -53,6 +53,19 @@
     <update id="changeUserPassword" parameterType="com.example.model.UserInfo">
         UPDATE finance.users set c_password = #{password} where c_id=#{id}
     </update>
+<!--    <select id="s_queryProductMulty" resultType="com.example.model.Product">-->
+<!--        select * from finance.products where-->
+<!--                1=1-->
+<!--            <if test="product!=null and product.p_id!=null">-->
+<!--                   and p_id = #{p_id}-->
+<!--            </if>-->
+<!--            <if test="product.p_name != null">-->
+<!--                and p_name like #{p_name}-->
+<!--            </if>-->
+<!--            <if test="product.p_status != p_status">-->
+<!--                and p_status = #{p_status};-->
+<!--            </if>-->
+<!--    </select>-->
 
     <!--删除某个基金-->
 <!--    <delete id="s_deleteFund">-->

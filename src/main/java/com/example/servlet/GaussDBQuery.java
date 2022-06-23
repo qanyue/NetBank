@@ -175,6 +175,36 @@ public class GaussDBQuery {
             System.out.println("数据库字典未找到");
         }
     }
+    public static  void PrintItemTable(ArrayList<LinkedHashMap<String,Object>> field,PrintWriter out,String id){
+        ArrayList<String> rows_name = new ArrayList<>(field.get(0).keySet());
+        try {
+
+            JSONObject attributeName = GaussDBQuery.getAttributeName(new File(GaussDBQuery.jsonPath()));
+            out.println("<style> table, th, td { border:1px solid black;} </style>");
+            out.println("选择要修改的产品:");
+            out.println("<table>");
+            out.println("<tr>");
+            for (String row : rows_name) {
+                row = attributeName.getString(row);
+                out.print("<th>" + row + "</th>");
+            }
+            out.println("</tr>");
+            for (LinkedHashMap<String, Object> item: field) {
+                out.println("<tr>");
+                for (String filed : item.keySet()) {
+                    out.print("<th>" + item.get(filed) + "</th>");
+                }
+                out.println("<th> <input type=\"radio\" name=\"radioSelect\" value=\""+
+                        ((String) item.get(id)).strip()+"\"> </th>");
+                out.println("</tr>");
+            }
+            out.println("</table>");
+            out.println("<br>");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("数据库字典未找到");
+        }
+    }
 
     public static void main(String[] args) {
         Connection conn = null;

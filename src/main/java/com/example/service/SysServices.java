@@ -3,6 +3,7 @@ package com.example.service;
 import com.example.model.*;
 import org.apache.ibatis.annotations.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.HashMap;
 import java.util.List;
 
@@ -41,6 +42,8 @@ public interface SysServices {
             "        from finance.client_products where c_id=#{id};")
     public List<Client_Products> ProductQuery(String c_id);
 
+
+
     @Select("        select * from finance.client_products where c_id=#{c_id,jdbcType=VARCHAR} and p_id= #{p_id,jdbcType=VARCHAR}")
     public Client_Products ProductQueryOne(HashMap<String, Object> map);
 
@@ -49,6 +52,20 @@ public interface SysServices {
 
     @Select("select * from finance.fund where  f_id = #{f_id}")
     public Fund s_queryFund(String f_id);
+    @Select({"<script>" ,
+            "select * from finance.fund where ",
+            " 1 = 1 ",
+            " <if test = 'f_id!=null'> ",
+            " and f_id = #{f_id}",
+            " </if> ",
+            " <if test='f_name != null'> ",
+            " and f_name like #{f_name} ",
+            " </if> ",
+            " <if test='f_status != null'> ",
+            " and f_status = #{f_status} ",
+            " </if> ",
+            " </script> "})
+    public List<Fund> s_queryFundMulty(Fund fund);
 
     @Delete("        DELETE from finance.fund where f_id = #{f_id}")
     public int s_deleteFund(String f_id);
@@ -58,6 +75,22 @@ public interface SysServices {
 
     @Select("select * from finance.products where  p_id = #{p_id}")
     public Product s_queryProduct(String p_id);
+
+
+    @Select({"<script>" ,
+            "select * from finance.products where ",
+            " 1 = 1 ",
+            " <if test = 'p_id!=null'> ",
+            " and p_id = #{p_id}",
+            " </if> ",
+            " <if test='p_name != null'> ",
+            " and p_name like #{p_name} ",
+            " </if> ",
+            " <if test='p_status != null'> ",
+            " and p_status = #{p_status} ",
+            " </if> ",
+            " </script> "})
+    public List<Product> s_queryProductMulty(Product product);
 
     @Delete("DELETE  from finance.fund where f_id=#{f_id}")
     public int s_deleteProduct(String p_id);
@@ -69,7 +102,20 @@ public interface SysServices {
     @Select("        select * from finance.insurance where  i_id = #{i_id}")
 
     public Insurance s_queryInsurance(String i_id);
-
+    @Select({"<script>" ,
+            "select * from finance.insurance where ",
+            " 1 = 1 ",
+            " <if test = 'i_id!=null'> ",
+            " and i_id = #{i_id}",
+            " </if> ",
+            " <if test='i_name != null'> ",
+            " and i_name like #{i_name} ",
+            " </if> ",
+            " <if test='i_status != null'> ",
+            " and i_status = #{i_status} ",
+            " </if> ",
+            " </script> "})
+    public List<Insurance> s_queryInsuranceMulty(Insurance insurances);
     @Delete("DELETE  from finance.insurance where i_id=#{i_id}")
     public int s_deleteInsurance(String i_id);
 

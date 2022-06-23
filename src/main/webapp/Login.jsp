@@ -28,7 +28,7 @@
             <br><br>
             <!--登陆按键和注册按键-->
             <span style="color: PaleVioletRed">管理员</span>
-            <input type="radio" value="manager" name="type" id="manager"><label style="color: PaleVioletRed">用户</label>
+            <input type="radio" value="manager" name="type" id="manager" checked><label style="color: PaleVioletRed">用户</label>
             <input type="radio" value="user" name="type" id="user">
             <br><br>
             <button type="submit" style="color:blueviolet">登陆</button>
