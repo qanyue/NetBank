@@ -11,64 +11,36 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 
-@WebServlet(name = "clientupdate", value = "/clientupdate")
-public class clientupdate extends HttpServlet {
+@WebServlet(name = "cardsearch", value = "/cardsearch")
+public class cardsearch extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        out.println("<link rel=\"stylesheet\" href=\"css/index.css\">");
         Statement stmt = null;
         ResultSet rs = null;
         String id =request.getParameter("id");
-        String name =request.getParameter("name");
-        String mail =request.getParameter("mail");
-        String card =request.getParameter("card");
-        String phone =request.getParameter("phone");
+        String caid =request.getParameter("caid");
+        String password =request.getParameter("password");
+        String type =request.getParameter("type");
         ArrayList<String> infos = new ArrayList<>();
         ArrayList<String> cols = new ArrayList<>();
-        Collections.addAll(infos,id,name,mail,card,phone);
-        Collections.addAll(cols,"c_id","c_name","c_mail","c_id_card","c_phone");
-        String selectsql = "select * from finance.client where c_id = '" + id + "';";
-        String insertsql = String.format("insert into finance.client values('%s','%s','%s','%s','%s','使用');"
-                , id.strip(), name.strip(), mail, card,phone);
-        String updatesql = "update finance.client";
-        updatesql = GaussDBQuery.sqlhandle(updatesql,infos,cols,"set");
-        updatesql = updatesql + " where c_id = " + id + ";";
-        if(id.isEmpty()){
-            out.println("<h1>请输入用户编号！");
-            return;
-        }
-        System.out.println(selectsql);
-        System.out.println(insertsql);
-        System.out.println(updatesql);
+        Collections.addAll(infos,id,caid,password,type);
+        Collections.addAll(cols,"c_id","ca_id","ca_password","ca_type");
+        String sql = "select * from finance.card";
+        sql = GaussDBQuery.sqlhandle(sql,infos,cols,"where");
+        System.out.println(sql);
         try (Connection conn = GaussDBQuery.getConnetion()) {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-            rs = stmt.executeQuery(selectsql);
+            rs = stmt.executeQuery(sql);
             if(!rs.next()){
-                int i = stmt.executeUpdate(insertsql);
-                if(i == 0){
-                    out.println("<h1>添加失败");
-                }else{
-                    out.println("<h1>添加成功");
-                }
-            }else{
-                if(name.isEmpty() && mail.isEmpty() && card.isEmpty() && phone.isEmpty()){
-                    out.println("<h1>修改失败");
-                }else{
-                    int i = stmt.executeUpdate(updatesql);
-                    if(i == 0){
-                        out.println("<h1>修改失败");
-                    }else{
-                        out.println("<h1>修改成功");
-                    }
-                }
+                out.println("<h1>查询不到有关信息");
             }
+            GaussDBQuery.printQueryResult(rs,out);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
@@ -98,3 +70,4 @@ public class clientupdate extends HttpServlet {
         doGet(req,resp);
     }
 }
+
