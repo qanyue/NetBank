@@ -348,11 +348,11 @@ public class DaoUtil {
         return list;
     }
 
-    public  static void main(String[] args){
-        UserLogin user = new UserLogin("11","1234567");
-        DaoUtil.modifyUserPassword(user);
-        System.out.println(checkDate("Tue Aug 18 00:00:00 CST 2020"));
-    }
+//    public  static void main(String[] args){
+//        UserLogin user = new UserLogin("11","1234567");
+//        DaoUtil.modifyUserPassword(user);
+//        System.out.println(checkDate("Tue Aug 18 00:00:00 CST 2020"));
+//    }
 
 }
 

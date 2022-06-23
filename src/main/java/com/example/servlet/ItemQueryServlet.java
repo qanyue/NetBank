@@ -80,7 +80,7 @@ public class ItemQueryServlet extends HttpServlet {
             }
             GaussDBQuery.PrintItemTable(list,out,"p_id");
             out.println(" <input type='hidden' name='type' value='products'> ");
-//            out.println(" <input type=\"submit\" name='button' value=\"修改 \"> ");
+            out.println(" <input type=\"submit\" name='button' value=\"修改 \"> ");
             out.println(" <input type=\"submit\" name='button' value=\"删除\" > </form>");
             return true;
         } catch (NoSuchMethodException e) {
@@ -128,7 +128,7 @@ public class ItemQueryServlet extends HttpServlet {
             }
             GaussDBQuery.PrintItemTable(list,out,"i_id");
             out.println(" <input type='hidden' name='type' value='insurance'> ");
-//            out.println(" <input type=\"submit\" name='button' value=\"修改 \"> ");
+            out.println(" <input type=\"submit\" name='button' value=\"修改 \"> ");
             out.println(" <input type=\"submit\" name='button' value=\"删除\" > </form>");
             return true;
         } catch (NoSuchMethodException e) {
@@ -176,7 +176,7 @@ public class ItemQueryServlet extends HttpServlet {
             }
             GaussDBQuery.PrintItemTable(list,out,"f_id");
             out.println(" <input type='hidden' name='type' value='fund'> ");
-//            out.println(" <input type=\"submit\" name='button' value=\"修改 \"> ");
+            out.println(" <input type=\"submit\" name='button' value=\"修改 \"> ");
             out.println(" <input type=\"submit\" name='button' value=\"删除\" > </form>");
             return true;
         } catch (NoSuchMethodException e) {

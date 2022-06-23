@@ -70,6 +70,24 @@ public interface SysServices {
     @Delete("        DELETE from finance.fund where f_id = #{f_id}")
     public int s_deleteFund(String f_id);
 
+    @Update(
+            {"<script>",
+                    "update finance.fund ",
+                    "  <set>",
+                    "    <if test='f_name != null'>f_name=#{f_name},</if>",
+                    "    <if test='f_type != null'>f_type=#{f_type},</if>",
+                    "    <if test='f_start != null'>f_start=#{f_start},</if>",
+                    "    <if test='f_end != null'>f_end=#{f_end},</if>",
+                    "    <if test='f_risk != null'>f_risk=#{f_risk},</if>",
+                    "    <if test='f_manager != null'>f_manager=#{f_manager},</if>",
+                    "    <if test='f_remain != null'>f_remain=#{f_remain},</if>",
+                    "    <if test='f_status != null'>f_status=#{f_status},</if>",
+                    "  </set>",
+                    "where f_id=#{f_id}",
+                    "</script>"}
+    )
+    public int s_updateFund(Fund fund);
+
     @Insert("        insert into finance.fund values (#{f_id},#{f_name},#{f_type},#{f_start},#{f_end},#{f_risk},#{f_manager},#{f_remain},#{f_status})")
     public int s_insertFund(Fund fund);
 
@@ -95,6 +113,20 @@ public interface SysServices {
     @Delete("DELETE  from finance.fund where f_id=#{f_id}")
     public int s_deleteProduct(String p_id);
 
+    @Update({"<script>",
+            "update finance.products ",
+            "  <set>",
+            "    <if test='p_name != null'>p_name=#{p_name},</if>",
+            "    <if test='p_start != null'>p_start=#{p_start},</if>",
+            "    <if test='p_end != null'>p_end=#{p_end},</if>",
+            "    <if test='p_remain != null'>p_remain=#{p_remain},</if>",
+            "    <if test='p_describe != null'>p_describe=#{p_describe},</if>",
+            "    <if test='p_status != null'>p_status=#{p_status},</if>",
+            "  </set>",
+            "where p_id=#{p_id}",
+            "</script>"
+    })
+    public int s_updateProduct(Product product);
     @Insert(" INSERT INTO finance.products(p_id,p_name,p_start,p_end,p_remain,p_describe,p_status) VALUES " +
             "            (#{p_id},#{p_name},#{p_start},#{p_end},#{p_remain},#{p_describe},#{p_status})")
     public int s_insertProduct(Product product);
@@ -119,6 +151,20 @@ public interface SysServices {
     @Delete("DELETE  from finance.insurance where i_id=#{i_id}")
     public int s_deleteInsurance(String i_id);
 
+    @Update({"<script> ",
+            "update finance.insurance ",
+            "  <set>",
+            "    <if test='i_name != null'>i_name=#{i_name},</if>",
+            "    <if test='i_start != null'>i_start=#{i_start},</if>",
+            "    <if test='i_project != null'>i_project=#{i_project},</if>",
+            "    <if test='i_end != null'>i_end=#{i_end},</if>",
+            "    <if test='i_applicable != null'>i_applicable=#{i_applicable},</if>",
+            "    <if test='i_status != null'>i_status=#{i_status},</if>",
+            "  </set>",
+            "where i_id=#{i_id}",
+            "</script>"
+    })
+    public  int s_updateInsurance(Insurance insurance);
     @Insert("        INSERT INTO finance.insurance (i_id,i_name,i_project,i_start,i_end,i_applicable,i_status)  VALUES " +
             "     (#{i_id},#{i_name},#{i_project},#{i_start},#{i_end},#{i_applicable},#{i_status})")
     public int s_insertInsurance(Insurance insurance);

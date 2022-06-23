@@ -5,7 +5,9 @@ import com.example.model.Fund;
 import com.example.model.Insurance;
 import com.example.model.Product;
 import com.example.model.UserLogin;
+import com.example.service.SysServices;
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.ibatis.session.SqlSession;
 import org.jetbrains.annotations.NotNull;
 
 import javax.enterprise.inject.spi.Bean;
@@ -17,6 +19,7 @@ import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -30,18 +33,23 @@ public class UpdateServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out =response.getWriter();
         HttpSession session = request.getSession();
         String type = session.getAttribute("type").toString().strip();
         Object item =  session.getAttribute("item");
         System.out.println("UpdateServlet:doGet():"+type);
         if ("products".equals(type) && updateAsset(item,request,"products")) {
             System.out.println("更新理财产品成功");
+            out.println("<h1>更新理财产品成功");
         }else  if("fund".equals(type) && updateAsset(item,request,"fund")){
             System.out.println("更新基金成功");
+            out.println("<h1>更新基金成功");
         }else if("insurance".equals(type) && updateAsset(item,request,"insurance")){
             System.out.println("更新保险成功");
+            out.println("<h1>更新保险成功");
         }else {
             System.out.println("更新产品出错");
+            out.println("<h1>更新金融产品出错");
         }
 
     }
@@ -52,6 +60,8 @@ public class UpdateServlet extends HttpServlet {
     }
 
     public boolean updateAsset(Object object, HttpServletRequest request, String type) {
+        SqlSession sqlSession = DaoUtil.getSqlSession();
+        SysServices services = sqlSession.getMapper(SysServices.class);
         System.out.println("UpdataServlet"+type);
         if (type.isEmpty()) {
             System.out.println("更新产品出错");
@@ -71,7 +81,10 @@ public class UpdateServlet extends HttpServlet {
                         BeanUtils.setProperty(product, str, temp);
                     }
                 }
-                return  DaoUtil.s_updateProduct(product);
+               boolean result =  services.s_updateProduct(product)>=1;
+               sqlSession.commit();
+               return result;
+
             } catch (IntrospectionException | InvocationTargetException | IllegalAccessException e) {
                 System.out.println("更新理财产品错误");
                 e.printStackTrace();
@@ -89,8 +102,9 @@ public class UpdateServlet extends HttpServlet {
                         BeanUtils.setProperty(fund, str, temp);
                     }
                 }
-                return DaoUtil.s_updateFund(fund);
-
+                boolean result  = services.s_updateFund(fund)>=1;
+                sqlSession.commit();
+                return result;
             } catch (IntrospectionException | InvocationTargetException | IllegalAccessException e) {
                 System.out.println("更新基金错误");
                 e.printStackTrace();
@@ -108,11 +122,15 @@ public class UpdateServlet extends HttpServlet {
                         BeanUtils.setProperty(insurance, "str", temp);
                     }
                 }
-               return DaoUtil.s_updateInsurancn(insurance);
+                boolean result  = services.s_updateInsurance(insurance)>=1;
+                sqlSession.commit();
+                return result;
             } catch (IntrospectionException | InvocationTargetException | IllegalAccessException e) {
                 System.out.println("更新保险错误");
                 e.printStackTrace();
                 return false;
+            }finally {
+                sqlSession.close();
             }
         }else {
             System.out.println("updateServlet开始更新出错");
