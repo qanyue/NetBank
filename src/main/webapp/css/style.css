@@ -1,0 +1,131 @@
+body {
+    background-color: white;
+    /*background-image: url(../images/backgd.jpg);*/
+    /*background-size: 100% 100%;*/
+    /*background-attachment: fixed;*/
+}
+
+.box{
+    width: 100%;
+    margin-top: 200px;
+    margin-bottom: 30px;
+    text-align: center;
+    border: 2px cornflowerblue;
+    box-sizing: border-box;
+}
+.box1{
+    font-family: "Times New Roman",Times,serif;
+    font-weight: 800;
+    letter-spacing: 10px;
+    border:1px;
+
+}
+.box1 h1{
+    text-align: center;
+
+}
+.box2{
+    width: 25%;
+    float: left;
+    border:1px black;
+}
+
+.head1 {
+    background-color: cornflowerblue;
+    width: 100%;
+    height: 50px;
+}
+
+.head2 {
+    border-bottom: #555555 1px solid;
+    width: 100%;
+}
+
+button {
+    border-radius: 10px;
+    background-color: #555555;
+    color: #f4f4f4;
+}
+button:hover {
+    background-color: grey;
+}
+button:active{
+    background-color: darkgrey;
+}
+
+
+
+.total{
+    text-align: center;
+    padding-top: 40px;
+}
+
+.total h1{
+    padding-bottom: 50px;
+}
+
+.admins{
+    float: left;
+    width:20%;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+.adminsclient{
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,.3);
+    background-image: url("#");
+    float: left;
+    width:33.3%;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+.adminscard{
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,.3);
+    /*background-image: url("../images/");*/
+    float: left;
+    width:33.3%;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+.adminasset {
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,.3);
+    float: left;
+    width:33.3%;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+/*.adminsinsurance{*/
+/*    background-image: url("../images/Insurance.png");*/
+/*    float: left;*/
+/*    width:20%;*/
+/*    padding-top: 50px;*/
+/*    padding-bottom: 100px;*/
+/*    box-sizing: border-box;*/
+/*    margin-bottom: 50px;*/
+/*}*/
+/*.adminsfund{*/
+/*    background-image: url("/picture/Fund.png");*/
+/*    float: left;*/
+/*    width:20%;*/
+/*    padding-top: 50px;*/
+/*    padding-bottom: 100px;*/
+/*    box-sizing: border-box;*/
+/*    margin-bottom: 50px;*/
+/*}*/
+/*.adminsproducts{*/
+/*    background-image: url("/picture/product.png");*/
+/*    float: left;*/
+/*    width:20%;*/
+/*    padding-top: 50px;*/
+/*    padding-bottom: 100px;*/
+/*    box-sizing: border-box;*/
+/*    margin-bottom: 50px;*/
+/*}*/
+

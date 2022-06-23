@@ -10,12 +10,13 @@
 <html>
 <head>
     <title>产品信息查询</title>
+    <link rel="stylesheet" href="./css/admin.css">
 </head>
-<body>
-<label><br>
-请选择产品需要查询的项目:</label><br>
-<form action="ItemQueryServlet" method="post">
-
+<body background="images/yellow.jpeg">
+<h1>请选择产品需要查询的项目:</h1><br>
+<div class="adminbox">
+<form action="ItemQueryServlet" class="distance" method="post">
+<br>
 <label>
     <input type="radio" name="asset" value="products">理财产品
 </label>
@@ -48,5 +49,6 @@
 <input type="submit" value="查询">
     <input type="submit" value="新建">
 </form>
+</div>
 </body>
 </html>

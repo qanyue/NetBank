@@ -13,11 +13,13 @@
 <%@ page import="java.sql.ResultSet" %>
 <html>
 <head>
-    <title>保险操作</title>
+    <title>Title</title>
     <link rel="stylesheet" href="./css/admin.css">
 </head>
 <body background="picture/yellow.jpeg">
-<h1>欢迎进入保险管理界面！</h1><br>
+<h1>
+    欢迎进入理财产品管理界面！
+</h1><br>
 <%
     Statement stmt = null;
     ResultSet rs = null;
@@ -33,15 +35,12 @@
 <div class="adminbox">
     <form action="" class="distance" >
         <h2>在对应框填入对应内容</h2><br>
-        保险编号：
+        理财产品编号：
         <input type="text" class="tom" name="i_id"><br>
-        保险名称：
+        理财产品名称：
         <input type="text" class="tom" name="i_name" ><br>
-        保险项目：
+        理财产品状态：
         <input type="text" class="tom" name="i_project" ><br>
-        保险状态：
-        <input type="text" class="tom" name="i_status" ><br>
-
         <input type="submit" class="tom" name="search" value="查询">
         <input type="submit" class="tom" name="delete" value="删除">
         <input type="submit" class="tom" name="add" value="增加">

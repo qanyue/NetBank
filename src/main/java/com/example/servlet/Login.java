@@ -38,8 +38,7 @@ public class Login extends HttpServlet {
                 System.out.println(2);
                 HttpSession session = request.getSession();
                 session.setAttribute("s_id",username);
-                //Todo 修改
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("admin.jsp");
             }else if("user".equals(type)){
                 rs = stmt.executeQuery(userSql);
                 if(!rs.next()){

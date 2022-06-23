@@ -31,7 +31,7 @@
         </div>
 
         <div class="Sidebar">
-            <%--            <a href="User.jsp"><img src="images/Home.png"></a>--%>
+                        <a href="admin.jsp"><img src="images/Home.png"></a>
         </div>
 
         <div class="form">
