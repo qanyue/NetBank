@@ -40,6 +40,7 @@ public class clientupdate extends HttpServlet {
         String updatesql = "update finance.client";
         updatesql = GaussDBQuery.sqlhandle(updatesql,infos,cols,"set");
         updatesql = updatesql + " where c_id = " + id + ";";
+        String insertuser = String.format("insert into finance.users values('%s','123456');",id.strip());
         if(id.isEmpty()){
             out.println("<h1>请输入用户编号！");
             return;
@@ -52,7 +53,8 @@ public class clientupdate extends HttpServlet {
             rs = stmt.executeQuery(selectsql);
             if(!rs.next()){
                 int i = stmt.executeUpdate(insertsql);
-                if(i == 0){
+                int j = stmt.executeUpdate(insertuser);
+                if(i == 0 || j == 0){
                     out.println("<h1>添加失败");
                 }else{
                     out.println("<h1>添加成功");
