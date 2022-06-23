@@ -39,7 +39,7 @@ public class clientupdate extends HttpServlet {
                 , id.strip(), name.strip(), mail, card,phone);
         String updatesql = "update finance.client";
         updatesql = GaussDBQuery.sqlhandle(updatesql,infos,cols,"set");
-        updatesql = updatesql + " where c_id = " + id + ";";
+        updatesql = updatesql + " where c_id = '" + id + "';";
         String insertuser = String.format("insert into finance.users values('%s','123456');",id.strip());
         if(id.isEmpty()){
             out.println("<h1>请输入用户编号！");
