@@ -52,13 +52,14 @@
         </div>
         <div class="head2">
             <h1> 欢迎您，<%=name %>！</h1>    <br>
+            <a href="passwordchange.jsp">修改密码</a>
         </div>
         <div class="gap1">
 
         </div>
         <div class="form">
             <div >
-                您持有的银行卡信息如下:
+                银行卡信息
                 <br>
                 <br>
                 <%
@@ -99,7 +100,7 @@
             </div>
             <br>
             <div>
-                您持有的资产信息如下:
+                资产信息
                 <br>
                 <br>
                 <%
@@ -206,9 +207,9 @@
             </div>
 
             <div class="Button1" style="text-align:center">
-<%--                <a href="Deposit.jsp"><button>存款</button></a>--%>
-                    <a href="Deposit.jsp"><img src="images/Deposit.png"></a>
-                    <p>存款</p>
+                <%--                <a href="Deposit.jsp"><button>存款</button></a>--%>
+                <a href="Deposit.jsp"><img src="images/Deposit.png"></a>
+                                    <p>存款</p>
 
             </div>
 
@@ -235,7 +236,7 @@
                     <p>购买保险</p>
             </div>
 
-
+</div>
 
 
 <%--        </div>--%>

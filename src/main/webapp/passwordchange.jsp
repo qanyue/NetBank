@@ -8,14 +8,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>更改密码</title>
     <link rel="stylesheet" href="css/passwordchange.css">
 </head>
 
 
 <body>
 
-<div class="container">
+    <div class="head">
+
+    </div>
     <div class="change">
         <br><br><br>
         <form  action="passwordchange" method="post">
@@ -40,7 +42,6 @@
 
         </form>
     </div>
-</div>
 
 
 </body>

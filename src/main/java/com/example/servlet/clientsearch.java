@@ -21,6 +21,7 @@ public class clientsearch extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        out.println("<link rel=\"stylesheet\" href=\"css/temp.css\">");
         Statement stmt = null;
         ResultSet rs = null;
         String id =request.getParameter("id");
@@ -39,7 +40,7 @@ public class clientsearch extends HttpServlet {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
             rs = stmt.executeQuery(sql);
             if(!rs.next()){
-                out.println("<h1>查询不到有关信息");
+                out.println("<h1>查询不到有关信息</h1>");
             }
             GaussDBQuery.printQueryResult(rs,out);
         } catch (SQLException | ClassNotFoundException e) {

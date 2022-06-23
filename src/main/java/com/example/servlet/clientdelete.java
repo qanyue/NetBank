@@ -21,6 +21,7 @@ public class clientdelete extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        out.println("<link rel=\"stylesheet\" href=\"css/temp.css\">");
         Statement stmt = null;
         ResultSet rs = null;
         String id =request.getParameter("id");
@@ -35,16 +36,16 @@ public class clientdelete extends HttpServlet {
         String sql = "delete from finance.client";
         sql = GaussDBQuery.sqlhandle(sql,infos,cols,"where");
         if(id.isEmpty() && name.isEmpty() && mail.isEmpty() && card.isEmpty() && phone.isEmpty()){
-            out.println("<h1>删库了！");
+            out.println("<h1>删库了！</h1>");
         }else{
             System.out.println(sql);
             try (Connection conn = GaussDBQuery.getConnetion()) {
                 stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
                 int i = stmt.executeUpdate(sql);
                 if(i == 0){
-                    out.println("<h1>删除失败");
+                    out.println("<h1>删除失败</h1>");
                 }else{
-                    out.println("<h1>删除成功");
+                    out.println("<h1>删除成功</h1>");
                 }
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();

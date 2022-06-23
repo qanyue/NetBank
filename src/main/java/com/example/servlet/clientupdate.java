@@ -22,7 +22,7 @@ public class clientupdate extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        out.println("<link rel=\"stylesheet\" href=\"css/index.css\">");
+        out.println("<link rel=\"stylesheet\" href=\"css/temp.css\">");
         Statement stmt = null;
         ResultSet rs = null;
         String id =request.getParameter("id");
@@ -39,7 +39,7 @@ public class clientupdate extends HttpServlet {
                 , id.strip(), name.strip(), mail, card,phone);
         String updatesql = "update finance.client";
         updatesql = GaussDBQuery.sqlhandle(updatesql,infos,cols,"set");
-        updatesql = updatesql + " where c_id = " + id + ";";
+        updatesql = updatesql + " where c_id = '" + id + "';";
         System.out.println(selectsql);
         System.out.println(insertsql);
         System.out.println(updatesql);
@@ -49,19 +49,19 @@ public class clientupdate extends HttpServlet {
             if(!rs.next()){
                 int i = stmt.executeUpdate(insertsql);
                 if(i == 0){
-                    out.println("<h1>添加失败");
+                    out.println("<h1>添加失败</h1>");
                 }else{
-                    out.println("<h1>添加成功");
+                    out.println("<h1>添加成功</h1>");
                 }
             }else{
                 if(name.isEmpty() && mail.isEmpty() && card.isEmpty() && phone.isEmpty()){
-                    out.println("<h1>修改失败");
+                    out.println("<h1>修改失败</h1>");
                 }else{
                     int i = stmt.executeUpdate(updatesql);
                     if(i == 0){
-                        out.println("<h1>修改失败");
+                        out.println("<h1>修改失败</h1>");
                     }else{
-                        out.println("<h1>修改成功");
+                        out.println("<h1>修改成功</h1>");
                     }
                 }
             }

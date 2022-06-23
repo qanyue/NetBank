@@ -141,16 +141,21 @@ body {
     vertical-align:middle;
 }
 
-button {
-    background-color: #555555;
-    color: #f4f4f4;
-}
-button:hover {
-    background-color: grey;
-}
-button:active{
-    background-color: darkgrey;
-}
+a:hover img{
+    filter:alpha(Opacity=80);
+    -moz-opacity:0.8;
+    opacity: 0.8;}
+
+/*button {*/
+/*    background-color: #555555;*/
+/*    color: #f4f4f4;*/
+/*}*/
+/*button:hover {*/
+/*    background-color: grey;*/
+/*}*/
+/*button:active{*/
+/*    background-color: darkgrey;*/
+/*}*/
 
 .footer {
     background-image: url(../images/backgd.jpg);
@@ -162,4 +167,10 @@ button:active{
 
 p {
   text-align: center;
+}
+
+
+
+a {
+    color: #555555;
 }
