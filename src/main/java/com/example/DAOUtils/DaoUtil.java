@@ -3,13 +3,24 @@ package com.example.DAOUtils;
 import com.example.model.*;
 import com.example.service.SysServices;
 import com.example.service.UserServices;
+import com.example.servlet.UpdateServlet;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import java.beans.BeanInfo;
+import java.beans.IntrospectionException;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.Locale;
 
 public class DaoUtil {
     public  static String resource = "mybatis-config.xml";
@@ -296,11 +307,48 @@ public class DaoUtil {
             sqlSession.close();
         }
     }
-
-
-    public static void  main(String[] args){
-        UserLogin userLogin = new UserLogin("11","123456");
+    public static String checkDate(String str){
+        String format1 = null;
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+            java.util.Date date= sdf.parse(str);
+            sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            format1 = sdf.format(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return format1;
     }
+    public static Date strToData(String str){
+        Date format1 = null;
+        try {
+            SimpleDateFormat  sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            java.util.Date date= sdf.parse(str);
+//            sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+//            format1 = sdf.format(date);
+            return format1;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static ArrayList<String> getbeanInfo(Object object) throws IntrospectionException {
+        ArrayList<String> list = new ArrayList<>();
+        Field[] fields = object.getClass().getDeclaredFields();
+
+        for (Field field:fields) {
+            field.setAccessible(true);
+            String key = field.getName();
+            list.add(key);
+        }
+        System.out.println(list.toString());
+        return list;
+    }
+
+    public  static void main(String[] args){
+        System.out.println(checkDate("Tue Aug 18 00:00:00 CST 2020"));
+    }
+
 }
 
 

@@ -1,5 +1,7 @@
 package com.example.model;
 
+import com.example.DAOUtils.DaoUtil;
+
 import java.util.Date;
 
 public class Fund {
@@ -27,21 +29,15 @@ public class Fund {
     this.f_type = f_type;
   }
 
-  public Date getF_start() {
+
+  public String getF_start() {
     return f_start;
   }
 
-  public void setF_start(Date f_start) {
-    this.f_start = f_start;
-  }
-
-  public Date getF_end() {
+  public String getF_end() {
     return f_end;
   }
 
-  public void setF_end(Date f_end) {
-    this.f_end = f_end;
-  }
 
   public String getF_risk() {
     return f_risk;
@@ -78,8 +74,8 @@ public class Fund {
   private String  f_id ;
   private String  f_name ;
   private String  f_type ;
-  private Date f_start ;
-  private Date f_end ;
+  private String f_start ;
+  private String f_end ;
   private String  f_risk ;
   private String  f_manager ;
   private Double  f_remain ;

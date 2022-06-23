@@ -1,6 +1,7 @@
 package com.example.servlet;
 
 import com.alibaba.fastjson.JSONObject;
+import com.example.DAOUtils.DaoUtil;
 import org.apache.commons.io.FileUtils;
 
 import javax.servlet.jsp.JspWriter;
@@ -145,11 +146,9 @@ public class GaussDBQuery {
         }
         return map;
     }
-    public static  void PrintChangeTable(LinkedHashMap<String,Object> field,PrintWriter out,String id){
+    public static  void PrintChangeTable(LinkedHashMap<String,Object> field,PrintWriter out){
         ArrayList<String> cols = new ArrayList<>(field.keySet());
-
         try {
-
             JSONObject attributeName = GaussDBQuery.getAttributeName(new File(GaussDBQuery.jsonPath()));
 
             out.println("<style> table, th, td { border:1px solid black;} </style>");
@@ -164,7 +163,15 @@ public class GaussDBQuery {
                 out.println("<tr>");
                 out.println("<th>"+col_name+ "</th>");
                 out.println("<th>"+field.get(col)+"</th>");
-                out.println("<th> <input type=\"text\" name=\""+col+"\"> </th>");
+                if(field.get(col) == null){
+                    out.println("<th> <input type=\"text\" name='"+col.strip()+"'></th>");
+                    out.println("</tr>");
+                    continue;
+                }
+                if(field.get(col).toString().contains("时间")){
+                     field.put(col,DaoUtil.checkDate(field.get(col).toString()));
+                }
+                out.println("<th> <input type=\"text\" name='"+col.strip()+"'value='"+field.get(col).toString().strip()+"' "+"\"> </th>");
                 out.println("</tr>");
             }
 

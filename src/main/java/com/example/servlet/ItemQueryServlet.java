@@ -32,7 +32,11 @@ public class ItemQueryServlet extends HttpServlet {
         System.out.println(asset_type);
         if("products".equals(asset_type.strip())){
             ProductQuery(request,response);
-        }else {
+        } else if ("fund".equals(asset_type)) {
+            FundQuery(request,response);
+        } else if ("insurance".equals(asset_type)) {
+            InsuranceQuery(request,response);
+        } else {
             out.println("出错");
         }
     }
@@ -75,8 +79,8 @@ public class ItemQueryServlet extends HttpServlet {
                 list.add(GaussDBQuery.beanToMap(p));
             }
             GaussDBQuery.PrintItemTable(list,out,"p_id");
-            out.println("＜input type=\"hidden\" name=\"type\" value=\"product\"＞ ");
-            out.println(" <input type=\"submit\" name='button' value=\"修改 \"> ");
+            out.println(" <input type='hidden' name='type' value='products'> ");
+//            out.println(" <input type=\"submit\" name='button' value=\"修改 \"> ");
             out.println(" <input type=\"submit\" name='button' value=\"删除\" > </form>");
             return true;
         } catch (NoSuchMethodException e) {
@@ -123,8 +127,8 @@ public class ItemQueryServlet extends HttpServlet {
                 list.add(GaussDBQuery.beanToMap(i));
             }
             GaussDBQuery.PrintItemTable(list,out,"i_id");
-            out.println("＜input type=\"hidden\" name=\"type\" value=\"insurance\"＞ ");
-            out.println(" <input type=\"submit\" name='button' value=\"修改 \"> ");
+            out.println(" <input type='hidden' name='type' value='insurance'> ");
+//            out.println(" <input type=\"submit\" name='button' value=\"修改 \"> ");
             out.println(" <input type=\"submit\" name='button' value=\"删除\" > </form>");
             return true;
         } catch (NoSuchMethodException e) {
@@ -171,8 +175,8 @@ public class ItemQueryServlet extends HttpServlet {
                 list.add(GaussDBQuery.beanToMap(f));
             }
             GaussDBQuery.PrintItemTable(list,out,"f_id");
-            out.println("＜input type=\"hidden\" name=\"type\" value=\"fund\"＞ ");
-            out.println(" <input type=\"submit\" name='button' value=\"修改 \"> ");
+            out.println(" <input type='hidden' name='type' value='fund'> ");
+//            out.println(" <input type=\"submit\" name='button' value=\"修改 \"> ");
             out.println(" <input type=\"submit\" name='button' value=\"删除\" > </form>");
             return true;
         } catch (NoSuchMethodException e) {

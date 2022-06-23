@@ -46,7 +46,7 @@
         <input type="password" name="password">
     </label><br>
 <input type="submit" value="查询">
-    <input type="submit" value=新建>
+    <input type="submit" value="新建">
 </form>
 </body>
 </html>

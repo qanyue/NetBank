@@ -24,6 +24,8 @@ public class UserLogin {
         this.id = id;
         this.password = password;
     }
+    public UserLogin(){
 
+    }
     private String password;
 }

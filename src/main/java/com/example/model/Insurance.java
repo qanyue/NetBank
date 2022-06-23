@@ -1,5 +1,7 @@
 package com.example.model;
 
+import com.example.DAOUtils.DaoUtil;
+
 import java.util.Date;
 
 public class Insurance {
@@ -30,19 +32,20 @@ public class Insurance {
         this.i_project = i_project;
     }
 
-    public Date getI_start() {
+
+    public String getI_start() {
         return i_start;
     }
 
-    public void setI_start(Date i_start) {
+    public void setI_start(String i_start) {
         this.i_start = i_start;
     }
 
-    public Date getI_end() {
+    public String getI_end() {
         return i_end;
     }
 
-    public void setI_end(Date i_end) {
+    public void setI_end(String i_end) {
         this.i_end = i_end;
     }
 
@@ -63,8 +66,8 @@ public class Insurance {
     }
 
     private String i_project;
-    private Date i_start;
-    private Date i_end;
+    private String i_start;
+    private String i_end;
     private String i_applicable;
     private String i_status;
 }
