@@ -44,7 +44,7 @@
                         rs = stmt.executeQuery("select * from finance.insurance;");
 //            PrintWriter printWriter = response.getWriter();
 //            GaussDBQuery.printQueryResult(rs,printWriter);
-                        GaussDBQuery.printQueryRadioI(rs, out, "i_id");
+                        GaussDBQuery.printQueryRadio(rs, out, "i_id","i_status");
                     } catch (SQLException | ClassNotFoundException e) {
                         e.printStackTrace();
                     } finally {
@@ -64,8 +64,6 @@
                                 e.printStackTrace();
                             }
                         }
-
-
                     }
 
                 %>

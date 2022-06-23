@@ -36,34 +36,34 @@
     <form action="BuyFundServlet" method="post">
         <div class="table">
             <%
-            Statement stmt = null;
-            ResultSet rs = null;
-            try (Connection conn = GaussDBQuery.getConnetion()) {
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-            rs = stmt.executeQuery("select * from finance.fund;");
-            GaussDBQuery.printQueryRadio(rs, out, "f_id");
-            } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-            } finally {
-            if (rs != null) {
-            System.out.println("关闭Rusultset....");
-            try {
-            rs.close();
-            } catch (SQLException e) {
-            e.printStackTrace();
-            }
-            }
-            if (stmt != null) {
-            System.out.println("关闭Statement....");
-            try {
-            stmt.close();
-            } catch (SQLException e) {
-            e.printStackTrace();
-            }
-            }
 
 
-            }
+                Statement stmt = null;
+                ResultSet rs = null;
+                try (Connection conn = GaussDBQuery.getConnetion()) {
+                    stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+                    rs = stmt.executeQuery("select * from finance.fund;");
+                    GaussDBQuery.printQueryRadio(rs, out, "f_id","f_status");
+                } catch (SQLException | ClassNotFoundException e) {
+                    e.printStackTrace();
+                } finally {
+                    if (rs != null) {
+                        System.out.println("关闭Rusultset....");
+                        try {
+                            rs.close();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (stmt != null) {
+                        System.out.println("关闭Statement....");
+                        try {
+                            stmt.close();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
 
             %>
         </div>
