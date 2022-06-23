@@ -5,3 +5,12 @@ h1 {
     font-weight: 50;
     color: #555555;
 }
+
+body{
+    text-align: center;
+}
+
+.table {
+    padding-left: 500px;
+    color: #555555;
+}

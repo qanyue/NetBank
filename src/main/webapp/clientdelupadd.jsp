@@ -32,6 +32,11 @@
 %>
 
 <div class="cotainer">
+    <body>
+    <div class="table">
+
+    </div>
+    </body>
 
     <div class="box1">
 

@@ -39,10 +39,17 @@ public class clientsearch extends HttpServlet {
         try (Connection conn = GaussDBQuery.getConnetion()) {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
             rs = stmt.executeQuery(sql);
+            out.println("<div class=\"table\">\n" +
+                    "    \n" +
+                    "</div>");
             if(!rs.next()){
                 out.println("<h1>查询不到有关信息</h1>");
             }
+
             GaussDBQuery.printQueryResult(rs,out);
+
+            out.println("</div>\n" +
+                    "    </body>");
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
