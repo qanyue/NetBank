@@ -19,7 +19,7 @@ public interface UserServices {
     public UserLogin login(UserLogin userLogin);
 
     //    public int changeUserPassword(UserLogin userLogin);
-    @Update("update finance.users set c_password = #{password} where c_id = #{id}")
+//    @Update("update finance.users set c_password = #{password} where c_id = #{id}")
     public int Password(UserLogin userLogin);
 
     public int buyInsurance(Client_Insurance client_insurance); //买保险

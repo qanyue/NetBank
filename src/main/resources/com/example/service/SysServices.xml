@@ -68,9 +68,9 @@
 <!--    </select>-->
 
     <!--删除某个基金-->
-<!--    <delete id="s_deleteFund">-->
-<!--        DELETE from finance.fund where f_id = #{f_id}-->
-<!--    </delete>-->
+    <delete id="s_deleteFund">
+        DELETE from finance.fund where f_id = #{f_id}
+    </delete>
     <!--查询某个基金-->
 <!--    <select id="s_queryFund" resultType="com.example.model.Fund">-->
 <!--        select * from finance.fund where  f_id = #{f_id}-->

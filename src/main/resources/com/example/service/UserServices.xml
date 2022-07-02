@@ -12,9 +12,9 @@
         <result property="password" column="c_password"/>
     </resultMap>
     <!--修改密码-->
-<!--    <update id="Password" useGeneratedKeys="true" parameterType="com.example.model.UserLogin">-->
-<!--        update finance.users set c_password = #{password} where c_id = #{id}-->
-<!--    </update>-->
+    <update id="Password" useGeneratedKeys="true" parameterType="com.example.model.UserLogin">
+        update finance.users set c_password = #{password} where c_id = #{id}
+    </update>
 
 <!--    <select id="login" parameterType="com.example.model.UserLogin" resultMap="userResultMap">-->
 <!--        select * from finance.users where c_id=#{id} and c_password=#{password}-->

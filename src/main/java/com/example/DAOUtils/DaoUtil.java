@@ -38,6 +38,7 @@ public class DaoUtil {
     public static SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
     public static SqlSession getSqlSession() {
+//        System.out.println(sqlSessionFactory.getConfiguration());
         return sqlSessionFactory.openSession();
     }
 
@@ -106,15 +107,17 @@ public class DaoUtil {
     public static boolean modifyUserPassword(UserLogin userLogin) {
         SqlSession sqlSession = DaoUtil.getSqlSession();
         try {
-            UserServices services = sqlSession.getMapper(UserServices.class);
-            int modify=services.Password(userLogin);
+
+//            UserServices services = sqlSession.getMapper(UserServices.class);
+//            int modify=services.Password(userLogin);
+            int modify = sqlSession.update("com.example.service.UserServices.Password",userLogin);
             //事务提交
             sqlSession.commit();
             if(modify >= 1){
                 System.out.println(userLogin.getId()+"修改密码成功"+modify);
                 return true;
             }else {
-                System.out.println("修改米麦失败");
+                System.out.println("修改密码失败");
                 return false;
             }
         } catch (Exception exception) {
@@ -259,7 +262,7 @@ public class DaoUtil {
         SqlSession sqlSession = DaoUtil.getSqlSession();
         try {
             SysServices services =  sqlSession.getMapper(SysServices.class);
-            int delete = services.s_deleteFund(p_id);
+            int delete = services.s_deleteProduct(p_id);
             sqlSession.commit();
             if(delete>=1){
                 System.out.println("删除理财产品"+p_id);
@@ -348,11 +351,11 @@ public class DaoUtil {
         return list;
     }
 
-//    public  static void main(String[] args){
-//        UserLogin user = new UserLogin("11","1234567");
-//        DaoUtil.modifyUserPassword(user);
-//        System.out.println(checkDate("Tue Aug 18 00:00:00 CST 2020"));
-//    }
+    public  static void main(String[] args){
+        UserLogin user = new UserLogin("11","123456");
+        DaoUtil.modifyUserPassword(user);
+        System.out.println(checkDate("Tue Aug 18 00:00:00 CST 2020"));
+    }
 
 }
 

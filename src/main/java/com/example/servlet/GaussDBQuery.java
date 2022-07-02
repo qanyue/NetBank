@@ -217,6 +217,31 @@ public class GaussDBQuery {
             System.out.println("数据库字典未找到");
         }
     }
+    public static  void PrintNewTable(LinkedHashMap<String,Object> field,PrintWriter out){
+        ArrayList<String> cols = new ArrayList<>(field.keySet());
+        try {
+            JSONObject attributeName = GaussDBQuery.getAttributeName(new File(GaussDBQuery.jsonPath()));
+
+            out.println("<style> table, th, td { border:1px solid black;} </style>");
+            out.println("<table>");
+            out.println("<tr>");
+            out.println("<th> 属性名 </th>");
+            out.println("<th> 新值 </th>");
+            out.println("</tr>");
+            for(String col:cols){
+                String col_name = attributeName.getString(col);
+                out.println("<tr>");
+                out.println("<th>"+col_name+ "</th>");
+                out.println("<th> <input type=\"text\" name='"+col.strip()+"'"+" "+"\"> </th>");
+                out.println("</tr>");
+            }
+            out.println("</table>");
+            out.println("<br>");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("数据库字典未找到");
+        }
+    }
     public static  void PrintItemTable(ArrayList<LinkedHashMap<String,Object>> field,PrintWriter out,String id){
         ArrayList<String> rows_name = new ArrayList<>(field.get(0).keySet());
         try {

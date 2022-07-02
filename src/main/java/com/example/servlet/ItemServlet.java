@@ -30,17 +30,21 @@ public class ItemServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
             String way = request.getParameter("button").strip();
             String item = request.getParameter("type");
-
+        PrintWriter out = response.getWriter();
         System.out.println("\n"+way+"产品");
         System.out.println("\n"+item+"产品");
         if("删除".equals(way)){
                 System.out.println("进入删除产品");
                 if("insurance".equals(item) && insuranceDelete(request,response)){
+
+                    out.println("删除保险成功");
                     System.out.println("删除保险成功");
                 }else if("products".equals(item)&& productDelete(request,response)){
                     System.out.println("删除理财产品成功");
+                    out.println("删除理财产品成功");
                 }else if("fund".equals(item) && fundDelete(request,response)){
                     System.out.println("删除基金成功");
+                    out.println("删除基金成功");
                 }
             }else if( "修改".equals(way)) {
                 System.out.println("进入更新产品");
@@ -67,7 +71,7 @@ public class ItemServlet extends HttpServlet {
             out.println("出错了请重试");
             return false;
         }
-        return DaoUtil.s_deleteFund(id);
+        return DaoUtil.s_deleteProduct(id);
     }
     public  static boolean fundDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("UTF-8");

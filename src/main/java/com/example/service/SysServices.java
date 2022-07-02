@@ -67,7 +67,7 @@ public interface SysServices {
             " </script> "})
     public List<Fund> s_queryFundMulty(Fund fund);
 
-    @Delete("        DELETE from finance.fund where f_id = #{f_id}")
+//    @Delete("        DELETE from finance.fund where f_id = #{f_id}")
     public int s_deleteFund(String f_id);
 
     @Update(
@@ -110,7 +110,7 @@ public interface SysServices {
             " </script> "})
     public List<Product> s_queryProductMulty(Product product);
 
-    @Delete("DELETE  from finance.fund where f_id=#{f_id}")
+    @Delete("DELETE  from finance.products where p_id=#{p_id}")
     public int s_deleteProduct(String p_id);
 
     @Update({"<script>",
